@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import createRoutes from './routes'
+import { PersistGate } from 'redux-persist/integration/react'
+import { ApolloProvider } from '@apollo/client'
+import { Provider } from 'react-redux'
+import { client } from './request/graphql'
+import configureStore from './store/configureStore'
+import 'antd/dist/antd.css'
 
-function App() {
+const App = () => {
+  const { store, persistor } = configureStore()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <PersistGate loading={null} persistor={persistor}>
+          {createRoutes()}
+        </PersistGate>
+      </ApolloProvider>
+    </Provider>
+  )
 }
 
-export default App;
+export default App

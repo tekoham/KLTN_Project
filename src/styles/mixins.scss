@@ -1,0 +1,11 @@
+@import './variables.scss';
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin up-to-size($key, $breakpoint: $breakpoints) {
+    @media (max-width: map-get($breakpoint, $key)) {
+        @content;
+    }
+}
