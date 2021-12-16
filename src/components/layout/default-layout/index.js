@@ -15,6 +15,7 @@ const DefaultLayout = ({ isActiveFooter, children }) => {
   const globalLoading = useSelector((state) => state.globalLoading?.loading)
   return (
     <div className='default-layout'>
+      <div></div>
       <HeaderNav />
       {children}
       {isActiveFooter && <Footer />}
