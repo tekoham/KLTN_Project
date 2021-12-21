@@ -17,7 +17,7 @@ import { utils } from 'ethers'
 
 BigNumber.config({ EXPONENTIAL_AT: 50, RANGE: 500 })
 
-const ETHER_NETWORK_ID = Number(process.env.REACT_APP_NETWORK_ID)
+// const ETHER_NETWORK_ID = Number(process.env.REACT_APP_NETWORK_ID)
 
 const AppContainer = (props) => {
   // const dispatch = useDispatch()

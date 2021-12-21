@@ -33,6 +33,7 @@ const Routes = (props) => {
     <div>
       <Switch>
         <PublicRoute exact path='/' component={Home} />
+        <PublicRoute path='/home' component={Home} />
       </Switch>
     </div>
   )
