@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none !important;
 
   &:disabled {
     opacity: 0.3;
@@ -29,11 +30,33 @@
 }
 
 .ant-btn-color-light-blue {
-  background: $third-color !important;
+  background-size: 100% 200% !important;
+  background-image: linear-gradient(
+    to bottom,
+    $third-color 50%,
+    $secondary-color 50%
+  ) !important;
+
+  transition: background-position 0.3s !important;
   color: $whiteColor !important;
 
   &:hover {
-    background: $secondary-color;
+    background-position: 0 100% !important;
+  }
+}
+
+.ant-btn-color-pink-hover-blue {
+  background-size: 100% 200% !important;
+  background-image: linear-gradient(
+    to bottom,
+    $secondary-color 50%,
+    $third-color 50%
+  ) !important;
+  transition: background-position 0.3s !important;
+  color: $whiteColor !important;
+
+  &:hover {
+    background-position: 0 100% !important;
   }
 }
 
