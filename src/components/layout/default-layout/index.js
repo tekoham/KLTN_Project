@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderNav from './header'
+import Header from './header'
 import Footer from './footer'
 import PropTypes from 'prop-types'
 
@@ -9,14 +9,14 @@ import ReactLoading from 'react-loading'
 
 import { Modal } from 'antd'
 
-import './style.scss'
+import './styles.scss'
 
 const DefaultLayout = ({ isActiveFooter, children }) => {
   const globalLoading = useSelector((state) => state.globalLoading?.loading)
   return (
     <div className='default-layout'>
       <div></div>
-      <HeaderNav />
+      <Header />
       {children}
       {isActiveFooter && <Footer />}
       {globalLoading && (
