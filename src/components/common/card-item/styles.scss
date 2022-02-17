@@ -1,0 +1,168 @@
+@import '../../../styles/variables.scss';
+
+.card-item-container {
+  .card-item-custom {
+    width: 412px;
+    height: 604px;
+    border-radius: 8px;
+    .ant-card-cover {
+      height: 500px;
+      overflow: hidden;
+      a {
+        width: 100%;
+        height: 100%;
+        img {
+          width: 100%;
+          object-fit: cover !important;
+          height: 100%;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+        }
+      }
+    }
+    .ant-card-body {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      height: 104px;
+    }
+    .like-display {
+      position: absolute;
+      top: -380px;
+      right: 0;
+      display: inline-block;
+      padding: 8px 22px 6px;
+      font-size: 16px;
+      border-radius: 15px;
+      border: 1px solid $whiteColor;
+      background-color: $lightGrayColor;
+      max-width: 95px;
+      white-space: nowrap;
+      .heart-icon {
+        position: relative;
+        top: -1.5px;
+        margin-right: 5px;
+        font-weight: bold;
+      }
+      .like-number {
+        color: $darkGrayColor;
+        font-weight: 500;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .price-display {
+      position: absolute;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      text-align: center;
+      border-radius: 8px;
+      border: 1px solid $whiteColor;
+      height: 90px;
+      background-color: rgba(218, 218, 218, 0.5);
+      backdrop-filter: blur(10px);
+      top: 400px;
+      padding: 15px;
+      .price {
+        width: 100%;
+        .auction-time-container {
+          position: absolute;
+          height: 70px;
+          width: 100%;
+          top: -70px;
+          left: 0;
+          overflow: hidden;
+          .time-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 50px;
+            opacity: 0;
+            border-radius: 8px;
+            height: 50px;
+            width: 100%;
+            position: absolute;
+            background-color: hsla(0, 0%, 22%, 0.8);
+            backdrop-filter: blur(5px);
+            transition: top 0.8s ease-in-out, opacity 1s ease-in-out;
+          }
+        }
+      }
+      .fixed-price {
+        font-size: 15px;
+        color: $whiteColor;
+        font-weight: 500;
+        text-align: left;
+      }
+      .price {
+        font-size: 21px;
+        color: $whiteColor;
+        font-weight: 500;
+      }
+    }
+    .card-item-information {
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 16px;
+        object-fit: cover;
+      }
+      .information {
+        display: inline-flex;
+        flex-direction: column;
+        width: 192px;
+        font-weight: 500;
+        .item-title {
+          font-size: 18px;
+          color: $titleColor;
+          &:hover {
+            cursor: pointer;
+            color: $secondary-color;
+          }
+        }
+        .item-title,
+        .creator {
+          display: inline;
+          white-space: nowrap;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+        }
+        .creator {
+          color: $subTextColorFontWhite;
+          &:hover {
+            cursor: pointer;
+            .creator-name {
+              color: $secondary-color !important;
+            }
+          }
+        }
+        .creator-name {
+          display: inline;
+          font-size: 14px !important;
+          color: $subTextColorFontWhite !important;
+        }
+      }
+      .details-btn {
+        display: inline;
+        width: 110px;
+        height: 42px;
+        margin-left: 16px;
+      }
+    }
+    &:hover {
+      .price {
+        .auction-time-container {
+          .time-counter {
+            top: 0;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

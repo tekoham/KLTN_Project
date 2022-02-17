@@ -1,0 +1,43 @@
+@import '../../../../styles/variables.scss';
+
+.footer-container {
+  background-color: $primary_color;
+  color: $whiteColor;
+  flex-direction: column;
+  padding: 40px 16px 16px 16px;
+  .footer-logo {
+    height: 136px;
+  }
+  .footer-link {
+    margin-bottom: 16px;
+    a {
+      color: $whiteColor;
+      font-size: 16px;
+    }
+    a:nth-of-type(2) {
+      margin: 0 60px;
+    }
+  }
+  .policy {
+    margin-bottom: 32px;
+    a {
+      color: $whiteColor;
+      font-size: 16px;
+    }
+    a:first-of-type {
+      margin-right: 60px;
+    }
+  }
+  .footer-description {
+    color: $subTextColor;
+    text-align: center;
+  }
+  .footer-copyright {
+    width: calc(100% + 32px);
+    color: $subTextColor;
+    margin-top: 32px;
+    border-top: 1px solid $subTextColor;
+    text-align: center;
+    padding-top: 16px;
+  }
+}

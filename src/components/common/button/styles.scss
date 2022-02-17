@@ -1,0 +1,97 @@
+@import '../../../styles/variables.scss';
+
+.ant-btn.ant-btn-custom {
+  height: 50px;
+  width: 150px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none !important;
+
+  &:disabled {
+    opacity: 0.3;
+  }
+
+  &:hover {
+    outline: 0 !important;
+    border-color: unset;
+  }
+
+  &:focus {
+    border: none;
+  }
+
+  img {
+    margin-right: 12px;
+  }
+}
+
+.ant-btn-color-light-blue {
+  background-size: 100% 200% !important;
+  background-image: linear-gradient(
+    to bottom,
+    $third-color 50%,
+    $secondary-color 50%
+  ) !important;
+
+  transition: background-position 0.3s !important;
+  color: $whiteColor !important;
+
+  &:hover {
+    background-position: 0 100% !important;
+  }
+}
+
+.ant-btn-color-pink-hover-blue {
+  background-size: 100% 200% !important;
+  background-image: linear-gradient(
+    to bottom,
+    $secondary-color 50%,
+    $third-color 50%
+  ) !important;
+  transition: background-position 0.3s !important;
+  color: $whiteColor !important;
+
+  &:hover {
+    background-position: 0 100% !important;
+  }
+}
+
+.ant-btn-color-pink {
+  background: $secondary-color !important;
+  color: $whiteColor !important;
+
+  &:hover {
+    background: $primary_color !important;
+  }
+}
+
+.ant-btn-color-charcoal-blue {
+  background: $primary_color !important;
+  color: $whiteColor !important;
+
+  &:hover {
+    background: $secondary-color !important;
+  }
+}
+
+.ant-btn-shape-small-radius {
+  border-radius: 8px !important;
+}
+
+.ant-btn-display-inline {
+  display: inline !important;
+}
+
+.ant-btn-small {
+  font-size: 14px !important;
+  height: 36px !important;
+  width: auto !important;
+}
+
+.ant-btn-fullwidth {
+  width: 100% !important;
+}
