@@ -33,7 +33,7 @@
     text-align: center;
   }
   .footer-copyright {
-    width: 100vw;
+    width: calc(100% + 32px);
     color: $subTextColor;
     margin-top: 32px;
     border-top: 1px solid $subTextColor;

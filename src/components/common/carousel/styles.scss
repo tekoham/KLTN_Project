@@ -1,0 +1,20 @@
+@import '../../../styles/variables.scss';
+
+.carousel-container {
+  .next-arrow,
+  .prev-arrow {
+    position: absolute;
+    z-index: 1;
+    top: 205px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .next-arrow {
+    right: -30px;
+  }
+  .prev-arrow {
+    position: absolute;
+    left: -40px;
+  }
+}
