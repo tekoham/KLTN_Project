@@ -21,7 +21,7 @@ const Banner = () => {
             color='light-blue'
             shape='small-radius'
           >
-            Connect NFT
+            Create Collection
           </CustomButton>
         </div>
       </div>

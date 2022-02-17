@@ -1,0 +1,15 @@
+@import '../../../styles/variables';
+
+.ant-tooltip {
+  .ant-tooltip-inner {
+    background: $whiteColor !important;
+    color: $titleColor;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  .ant-tooltip-arrow {
+    .ant-tooltip-arrow-content {
+      background: $whiteColor;
+    }
+  }
+}

@@ -1,10 +1,13 @@
 @import '../../../../styles/variables.scss';
 
 .header-container {
+  position: sticky;
+  top: 0;
   background: $whiteColor;
   padding: 0 24px 0 32px;
   justify-content: space-between;
   align-items: center;
+  z-index: 999;
   img {
     margin-right: 12px;
   }
@@ -20,7 +23,7 @@
       .ant-select-selector {
         border-radius: 8px;
         border: none !important;
-        background-color: $lightGray;
+        background-color: $secondary_background_color;
         height: 45px;
         display: flex;
         align-items: center;

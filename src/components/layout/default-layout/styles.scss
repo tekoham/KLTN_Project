@@ -1,5 +1,10 @@
 @import '../../../styles/variables.scss';
 
 .default-layout {
-  // background-color: $whiteColor;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background: $primary_background_color;
+  color: $whiteColor;
+  max-width: 100vw;
 }
