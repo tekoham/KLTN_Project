@@ -12,7 +12,7 @@ import AppContainer from '../AppContainer'
 import ErrorBoundary from '../components/common/error-boundary'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
-import { Home } from '../pages'
+import { Home, ConnectWallet, Marketplace } from '../pages'
 
 const Routes = (props) => {
   const alert = useSelector((state) => state.alert)
@@ -34,6 +34,8 @@ const Routes = (props) => {
       <Switch>
         <PublicRoute exact path='/' component={Home} />
         <PublicRoute path='/home' component={Home} />
+        <PublicRoute path='/connect' component={ConnectWallet} />
+        <PublicRoute path='/explore' component={Marketplace} />
       </Switch>
     </div>
   )
