@@ -122,7 +122,7 @@ const CardItemSmall = ({ data }) => {
           <div className='creator'>
             <Avatar
               size={{ xs: 12, sm: 16, md: 22, lg: 30, xl: 30, xxl: 30 }}
-              src='avatar.jpg'
+              src='/avatar.jpg'
             />
             Created by <div className='creator-name'>@Changgggg</div>
           </div>

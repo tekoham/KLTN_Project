@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Avatar, Row, Col } from 'antd'
 import { CustomTooltip } from '../../../components/common'
 import verifiedIcon from '../../../assest/icon/verified-icon.svg'
@@ -36,14 +37,19 @@ const TopAuthor = () => {
           return (
             <Col className='author-container' span={6} key={index}>
               <div className='order'>{index + 1}.</div>
-              <Avatar
-                size={{ xs: 40, sm: 50, md: 60, lg: 70, xl: 70, xxl: 70 }}
-                shape='square'
-                src='avatar.jpg'
-              />
+              <Link to='/user/1'>
+                <Avatar
+                  size={{ xs: 40, sm: 50, md: 60, lg: 70, xl: 70, xxl: 70 }}
+                  shape='square'
+                  src='avatar.jpg'
+                />
+              </Link>
+
               <div className='author-info'>
                 <CustomTooltip placement='topLeft' title={author?.name}>
-                  <div className='author-name'>{author?.name}</div>
+                  <Link to='/user/1'>
+                    <div className='author-name'>{author?.name}</div>
+                  </Link>
                 </CustomTooltip>
 
                 <div className='total-sell'>{author?.totalSell} ETH</div>

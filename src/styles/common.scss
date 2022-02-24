@@ -60,3 +60,69 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.ant-message {
+  .ant-message-notice {
+    .ant-message-notice-content {
+      border-radius: 15px;
+      font-weight: 500;
+    }
+  }
+}
+
+.ant-pagination {
+  margin-top: 48px;
+  font-weight: 500;
+  .ant-pagination-prev,
+  .ant-pagination-next,
+  .ant-pagination-item {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    &:hover {
+      border-color: $secondary-color;
+      a {
+        color: $secondary-color;
+      }
+    }
+  }
+  .ant-pagination-item-link {
+    border-radius: 8px;
+  }
+
+  .ant-pagination-prev:hover,
+  .ant-pagination-next:hover {
+    .ant-pagination-item-link {
+      border-color: $secondary-color;
+      svg {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  .ant-pagination-prev:hover.ant-pagination-disabled,
+  .ant-pagination-next:hover.ant-pagination-disabled {
+    .ant-pagination-item-link {
+      border-color: #dddddd !important;
+      svg {
+        color: inherit !important;
+      }
+    }
+  }
+
+  .ant-pagination-item-active {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    a {
+      color: $whiteColor;
+    }
+    &:hover {
+      a {
+        color: $whiteColor;
+      }
+    }
+  }
+}

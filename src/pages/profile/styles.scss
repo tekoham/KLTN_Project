@@ -1,0 +1,149 @@
+@import '../../styles/variables.scss';
+
+.profile {
+  .profile-banner {
+    position: relative;
+    height: 380px;
+    background-image: url('../../assest/image/profile-banner.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0 80px;
+    overflow: hidden;
+    .title {
+      font-size: 45px;
+      font-weight: 600;
+      margin-top: 100px;
+    }
+    .edit-profile-btn-container {
+      position: absolute;
+      right: 80px;
+      top: 380px;
+      transition: top 0.8s ease-in-out;
+    }
+    &:hover {
+      .edit-profile-btn-container {
+        top: 100px;
+      }
+    }
+  }
+  .profile-content-container {
+    padding: 0 80px 80px 80px;
+    .author-information {
+      border-radius: 15px;
+      max-width: 300px;
+      height: fit-content;
+      background-color: $whiteColor;
+      padding: 30px 25px;
+      position: relative;
+      margin-top: -140px;
+      color: black;
+      margin-right: 48px;
+      .author-avatar {
+        position: relative;
+        max-width: 180px;
+        height: 180px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        .avatar {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 5px;
+          border: 2px solid $secondary-color;
+        }
+        .verify-icon {
+          position: absolute;
+          bottom: -5px;
+          right: -8px;
+          width: 24px;
+        }
+      }
+      .author-name {
+        max-width: 100%;
+        width: fit-content;
+        font-size: 22px;
+        font-weight: 500;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        &:hover {
+          cursor: pointer;
+          color: $secondary-color;
+        }
+      }
+      .author-description {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: $subTextColorFontWhite;
+        .show-more,
+        .show-less {
+          display: inline;
+          margin-left: 5px;
+          color: $third-color;
+          font-weight: 600;
+          &:hover {
+            cursor: pointer;
+            color: $secondary-color;
+          }
+        }
+      }
+      .author-address {
+        margin-bottom: 24px;
+        .address,
+        .copy-icon {
+          display: inline;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .address {
+          font-size: 16px;
+          font-weight: 500;
+        }
+        .copy-icon {
+          margin-left: 12px;
+        }
+      }
+      .author-count-items-container {
+        .attribute-container {
+          padding: 16px 0;
+          border-bottom: 1px solid $lightGrayColor;
+          font-size: 16px;
+          .number {
+            font-weight: 600;
+          }
+        }
+        .attribute-container:last-of-type {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+      }
+    }
+    .profile-content {
+      margin-top: 36px;
+
+      .ant-tabs-top > .ant-tabs-nav::before {
+        border-bottom: none !important;
+      }
+      .ant-tabs-tab {
+        background-color: $whiteColor !important;
+        border-radius: 50px !important;
+        margin-right: 18px;
+        margin-bottom: 18px;
+        font-size: 16px;
+        font-weight: 500;
+        color: $subTextColorFontWhite !important;
+        &:hover {
+          color: $secondary-color !important;
+        }
+      }
+      .ant-tabs-tab-active {
+        background-color: $secondary-color !important;
+      }
+      .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+        color: $whiteColor !important;
+      }
+    }
+  }
+}
