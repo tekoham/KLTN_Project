@@ -122,28 +122,6 @@
     }
     .profile-content {
       margin-top: 36px;
-
-      .ant-tabs-top > .ant-tabs-nav::before {
-        border-bottom: none !important;
-      }
-      .ant-tabs-tab {
-        background-color: $whiteColor !important;
-        border-radius: 50px !important;
-        margin-right: 18px;
-        margin-bottom: 18px;
-        font-size: 16px;
-        font-weight: 500;
-        color: $subTextColorFontWhite !important;
-        &:hover {
-          color: $secondary-color !important;
-        }
-      }
-      .ant-tabs-tab-active {
-        background-color: $secondary-color !important;
-      }
-      .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-        color: $whiteColor !important;
-      }
     }
   }
 }

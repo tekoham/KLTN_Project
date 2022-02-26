@@ -4,6 +4,7 @@ import CardItemSmall from './card-item-small'
 import ErrorBoundary from './error-boundary'
 import CustomTooltip from './tooltip'
 import CustomCarousel from './carousel'
+import ListCustom from './list-custom'
 
 export {
   CustomButton,
@@ -12,4 +13,5 @@ export {
   ErrorBoundary,
   CustomTooltip,
   CustomCarousel,
+  ListCustom,
 }
