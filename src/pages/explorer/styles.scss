@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+.marketplace-container {
+  .marketplace-header-container {
+    height: 320px;
+    background-image: url('../../assest/image/marketplace-banner.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-direction: column;
+    color: $whiteColor;
+    padding: 60px 80px;
+    .title {
+      max-width: 400px;
+      font-size: 45px;
+      line-height: 50px;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .subtitle {
+      color: $third-color;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  .marketplace-content-container {
+    padding: 30px 80px;
+    .content-title {
+      position: relative;
+      top: -10px;
+      font-size: 36px;
+      font-weight: 600;
+    }
+    .marketplace-pagination {
+      text-align: center;
+      margin-top: 60px;
+      margin-bottom: 50px;
+    }
+    .ant-tabs-nav-wrap {
+      justify-content: flex-end;
+    }
+  }
+}

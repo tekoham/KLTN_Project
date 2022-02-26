@@ -35,7 +35,7 @@ const Routes = (props) => {
         <PublicRoute exact path='/' component={Home} />
         <PublicRoute path='/home' component={Home} />
         <PublicRoute path='/connect' component={ConnectWallet} />
-        <PublicRoute path='/explore' component={Marketplace} />
+        <PublicRoute path='/marketplace' component={Marketplace} />
         <PublicRoute
           path='/user/:address'
           component={Profile}

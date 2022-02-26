@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import DefaultLayout from '../../components/layout/default-layout'
-import { ListCustom } from './components'
+import { ListCustom } from '../../components/common'
 import VerifyIcon from '../../assest/icon/verified-icon.svg'
 import CopyIcon from '../../assest/icon/copy-link.svg'
 import { Tabs, Pagination, message } from 'antd'
@@ -202,6 +202,7 @@ const Profile = () => {
                   >
                     <ListCustom
                       data={ele?.data.slice(startOffset, endOffset)}
+                      span={{ xxl: 6, xl: 8, lg: 12, md: 12, sm: 24, xs: 24 }}
                       key={index}
                     />
                     <Pagination
