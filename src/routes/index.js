@@ -12,7 +12,7 @@ import AppContainer from '../AppContainer'
 import ErrorBoundary from '../components/common/error-boundary'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
-import { Home, ConnectWallet, Marketplace, Profile } from '../pages'
+import { Home, ConnectWallet, Marketplace, Profile, Collection } from '../pages'
 
 const Routes = (props) => {
   const alert = useSelector((state) => state.alert)
@@ -39,6 +39,11 @@ const Routes = (props) => {
         <PublicRoute
           path='/user/:address'
           component={Profile}
+          key={Date.now()}
+        />
+        <PublicRoute
+          path='/collection/:address'
+          component={Collection}
           key={Date.now()}
         />
       </Switch>

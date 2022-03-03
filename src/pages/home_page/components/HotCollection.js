@@ -22,7 +22,7 @@ const HotCollection = (props) => {
             <Col span={6} key={index}>
               <Card
                 cover={
-                  <Link to='/'>
+                  <Link to='/collection/1'>
                     <img alt='collection cover image' src={collection?.cover} />
                   </Link>
                 }
