@@ -14,7 +14,7 @@ const Explore = (props) => {
     return {
       name: stringRandom(true),
       startDate: Date.now(),
-      expireDate: Math.floor(Math.random() * Date.now()) + 1000,
+      expireDate: Math.floor(Math.random() * Date.now()) + 400,
       type: type[Math.floor(Math.random() * type.length)],
       price: Math.random().toFixed(3),
       likes: Math.floor(Math.random() * 100) + 1,

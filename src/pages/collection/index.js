@@ -6,6 +6,7 @@ import CopyIcon from '../../assest/icon/copy-link.svg'
 import { Pagination, message } from 'antd'
 import { useWindowSize } from '../../utils/useWindowSize'
 import { CustomTooltip, CustomButton } from '../../components/common'
+import { stringRandom, type, randomImage } from '../../utils/randomData'
 import copy from 'copy-to-clipboard'
 import './styles.scss'
 
@@ -16,30 +17,6 @@ const Collection = () => {
   const [isMobile] = useWindowSize(576)
   const [isBioOpen, setIsBioOpen] = useState(false)
 
-  const stringRandom = (uppcase = false) => {
-    const randomString =
-      Math.random().toString(36).substring(2, 15) +
-      ' ' +
-      Math.random().toString(36).substring(2, 15)
-    if (uppcase) {
-      return randomString
-        .toLowerCase()
-        .split(' ')
-        .map(function (Word) {
-          return Word[0].toUpperCase() + Word.substr(1)
-        })
-        .join(' ')
-    }
-    return randomString
-  }
-  const randomImage = () => {
-    return (
-      `https://source.unsplash.com/random/500x500?sig=${
-        Math.floor(Math.random() * 100) + 1
-      }` || ''
-    )
-  }
-  const type = ['fixed_price', 'auction']
   const listData = new Array(24).fill(undefined).map((ele, index) => {
     return {
       id: index,

@@ -16,7 +16,7 @@ const Menu = () => {
       title: 'Activity',
     },
     {
-      to: `/user`,
+      to: `/user/1`,
       title: 'Profile',
     },
     {

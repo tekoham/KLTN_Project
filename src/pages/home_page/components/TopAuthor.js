@@ -3,24 +3,9 @@ import { Link } from 'react-router-dom'
 import { Avatar, Row, Col } from 'antd'
 import { CustomTooltip } from '../../../components/common'
 import verifiedIcon from '../../../assest/icon/verified-icon.svg'
+import { stringRandom } from '../../../utils/randomData'
 
 const TopAuthor = () => {
-  const stringRandom = (uppcase = false) => {
-    const randomString =
-      Math.random().toString(36).substring(2, 15) +
-      ' ' +
-      Math.random().toString(36).substring(2, 15)
-    if (uppcase) {
-      return randomString
-        .toLowerCase()
-        .split(' ')
-        .map(function (Word) {
-          return Word[0].toUpperCase() + Word.substr(1)
-        })
-        .join(' ')
-    }
-    return randomString
-  }
   const verified = [true, false]
   const dummyData = new Array(12).fill(undefined).map((ele, index) => {
     return {

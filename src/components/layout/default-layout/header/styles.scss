@@ -70,6 +70,11 @@
       border-radius: 12px !important;
     }
   }
+  .connect-btn {
+    &:hover {
+      background: $primary_color !important;
+    }
+  }
 }
 
 .dropdown-search-header {
