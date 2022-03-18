@@ -6,12 +6,14 @@ import VerifyIcon from '../../assest/icon/verified-icon.svg'
 import CopyIcon from '../../assest/icon/copy-link.svg'
 import { Tabs, Pagination, message } from 'antd'
 import { useWindowSize } from '../../utils/useWindowSize'
+import { stringRandom, type, randomImage } from '../../utils/randomData'
 import { CustomTooltip, CustomButton } from '../../components/common'
 import copy from 'copy-to-clipboard'
 import './styles.scss'
 
 const STEP = 12
 const MOBILE_STEP = 4
+const TRUNCATE_LETTER = 120
 
 const Profile = () => {
   const { TabPane } = Tabs
@@ -20,36 +22,12 @@ const Profile = () => {
   const [endOffset, setEndOffset] = useState(isMobile ? MOBILE_STEP : STEP)
   const [isBioOpen, setIsBioOpen] = useState(false)
 
-  const stringRandom = (uppcase = false) => {
-    const randomString =
-      Math.random().toString(36).substring(2, 15) +
-      ' ' +
-      Math.random().toString(36).substring(2, 15)
-    if (uppcase) {
-      return randomString
-        .toLowerCase()
-        .split(' ')
-        .map(function (Word) {
-          return Word[0].toUpperCase() + Word.substr(1)
-        })
-        .join(' ')
-    }
-    return randomString
-  }
-  const randomImage = () => {
-    return (
-      `https://source.unsplash.com/random/500x500?sig=${
-        Math.floor(Math.random() * 100) + 1
-      }` || ''
-    )
-  }
-  const type = ['fixed_price', 'auction']
   const listData = new Array(24).fill(undefined).map((ele, index) => {
     return {
       id: index,
       name: stringRandom(true),
       startDate: Date.now(),
-      expireDate: Math.floor(Math.random() * Date.now()) + 1000,
+      expireDate: Math.floor(Math.random() * Date.now()) + 400,
       type: type[Math.floor(Math.random() * type.length)],
       price: Math.random().toFixed(3),
       likes: Math.floor(Math.random() * 100) + 1,
@@ -98,7 +76,7 @@ const Profile = () => {
   }
 
   const truncateBio = (data) => {
-    const bio = data.substring(0, 120)
+    const bio = data.substring(0, TRUNCATE_LETTER)
     return `${bio}...`
   }
 

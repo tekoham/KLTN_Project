@@ -84,7 +84,7 @@ const CardItemSmall = ({ data }) => {
     <div className='card-item-small-container'>
       <Card
         cover={
-          <Link to='/'>
+          <Link to='/collectible/1'>
             <img alt='NFT-image' src={data?.image} />
           </Link>
         }

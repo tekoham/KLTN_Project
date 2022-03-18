@@ -3,6 +3,7 @@ import { Tabs, Pagination } from 'antd'
 import { ListCustom } from '../../components/common'
 import { useWindowSize } from '../../utils/useWindowSize'
 import DefaultLayout from '../../components/layout/default-layout'
+import { stringRandom, randomImage, type } from '../../utils/randomData'
 import './styles.scss'
 
 const STEP = 20
@@ -14,36 +15,12 @@ const Marketplace = (props) => {
   const [startOffset, setStartOffset] = useState(0)
   const [endOffset, setEndOffset] = useState(isMobile ? MOBILE_STEP : STEP)
 
-  const stringRandom = (uppcase = false) => {
-    const randomString =
-      Math.random().toString(36).substring(2, 15) +
-      ' ' +
-      Math.random().toString(36).substring(2, 15)
-    if (uppcase) {
-      return randomString
-        .toLowerCase()
-        .split(' ')
-        .map(function (Word) {
-          return Word[0].toUpperCase() + Word.substr(1)
-        })
-        .join(' ')
-    }
-    return randomString
-  }
-  const randomImage = () => {
-    return (
-      `https://source.unsplash.com/random/500x500?sig=${
-        Math.floor(Math.random() * 100) + 1
-      }` || ''
-    )
-  }
-  const type = ['fixed_price', 'auction']
   const listData = new Array(24).fill(undefined).map((ele, index) => {
     return {
       id: index,
       name: stringRandom(true),
       startDate: Date.now(),
-      expireDate: Math.floor(Math.random() * Date.now()) + 1000,
+      expireDate: Math.floor(Math.random() * Date.now()) + 400,
       type: type[Math.floor(Math.random() * type.length)],
       price: Math.random().toFixed(3),
       likes: Math.floor(Math.random() * 100) + 1,
@@ -58,11 +35,11 @@ const Marketplace = (props) => {
       data: listData,
     },
     {
-      name: 'Art',
+      name: 'Arts',
       data: listData,
     },
     {
-      name: 'Photo',
+      name: 'Photos',
       data: listData,
     },
     {

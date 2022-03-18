@@ -12,7 +12,14 @@ import AppContainer from '../AppContainer'
 import ErrorBoundary from '../components/common/error-boundary'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
-import { Home, ConnectWallet, Marketplace, Profile, Collection } from '../pages'
+import {
+  Home,
+  ConnectWallet,
+  Marketplace,
+  Profile,
+  Collection,
+  NFTDetail,
+} from '../pages'
 
 const Routes = (props) => {
   const alert = useSelector((state) => state.alert)
@@ -44,6 +51,11 @@ const Routes = (props) => {
         <PublicRoute
           path='/collection/:address'
           component={Collection}
+          key={Date.now()}
+        />
+        <PublicRoute
+          path='/collectible/:id'
+          component={NFTDetail}
           key={Date.now()}
         />
       </Switch>

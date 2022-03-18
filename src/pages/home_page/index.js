@@ -9,38 +9,15 @@ import {
   HotCollection,
   Explore,
 } from './components'
+import { stringRandom, randomImage, type } from '../../utils/randomData'
 import './styles.scss'
 
 export default function Home() {
-  const stringRandom = (uppcase = false) => {
-    const randomString =
-      Math.random().toString(36).substring(2, 15) +
-      ' ' +
-      Math.random().toString(36).substring(2, 15)
-    if (uppcase) {
-      return randomString
-        .toLowerCase()
-        .split(' ')
-        .map(function (Word) {
-          return Word[0].toUpperCase() + Word.substr(1)
-        })
-        .join(' ')
-    }
-    return randomString
-  }
-  const randomImage = () => {
-    return (
-      `https://source.unsplash.com/random/500x500?sig=${
-        Math.floor(Math.random() * 100) + 1
-      }` || ''
-    )
-  }
-  const type = ['fixed_price', 'auction']
   const dummyData = new Array(6).fill(undefined).map((ele, index) => {
     return {
       name: stringRandom(true),
       startDate: Date.now(),
-      expireDate: Math.floor(Math.random() * Date.now()) + 1000,
+      expireDate: Math.floor(Math.random() * Date.now()) + 400,
       type: type[Math.floor(Math.random() * type.length)],
       price: Math.random().toFixed(3),
       likes: Math.floor(Math.random() * 100) + 1,
