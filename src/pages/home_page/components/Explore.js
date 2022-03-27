@@ -40,10 +40,7 @@ const Explore = (props) => {
         <Row gutter={[{ xs: 32, sm: 32, md: 32, lg: 32, xl: 32, xxl: 36 }, 32]}>
           {dummyData?.map((item, index) => {
             return (
-              <Col
-                span={{ xs: 24, sm: 12, md: 12, lg: 8, xl: 6, xxl: 6 }}
-                key={index}
-              >
+              <Col key={index} xs={24} sm={12} md={12} lg={8} xl={6} xxl={6}>
                 <CardItemSmall data={item}></CardItemSmall>
               </Col>
             )

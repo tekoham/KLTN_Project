@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import DefaultLayout from '../../components/layout/default-layout'
 import { ListCustom } from '../../components/common'
 import VerifyIcon from '../../assest/icon/verified-icon.svg'
 import CopyIcon from '../../assest/icon/copy-link.svg'
+import noItem from '../../assest/image/no-item.png'
 import { Tabs, Pagination, message } from 'antd'
 import { useWindowSize } from '../../utils/useWindowSize'
 import { stringRandom, type, randomImage } from '../../utils/randomData'
@@ -178,18 +179,31 @@ const Profile = () => {
                     tab={`${ele?.name} (${ele?.data.length})`}
                     key={index + 1}
                   >
-                    <ListCustom
-                      data={ele?.data.slice(startOffset, endOffset)}
-                      span={{ xxl: 6, xl: 8, lg: 12, md: 12, sm: 24, xs: 24 }}
-                      key={index}
-                    />
-                    <Pagination
-                      className='profile-pagination'
-                      defaultCurrent={1}
-                      total={ele?.data.length}
-                      pageSize={isMobile ? MOBILE_STEP : STEP}
-                      onChange={onChangePage}
-                    />
+                    {ele?.data?.length > 0 ? (
+                      <div>
+                        <ListCustom
+                          data={ele?.data.slice(startOffset, endOffset)}
+                          span={{
+                            xxl: 6,
+                            xl: 8,
+                            lg: 12,
+                            md: 12,
+                            sm: 24,
+                            xs: 24,
+                          }}
+                          key={index}
+                        />
+                        <Pagination
+                          className='profile-pagination'
+                          defaultCurrent={1}
+                          total={ele?.data.length}
+                          pageSize={isMobile ? MOBILE_STEP : STEP}
+                          onChange={onChangePage}
+                        />
+                      </div>
+                    ) : (
+                      <NoItem />
+                    )}
                   </TabPane>
                 )
               })}
@@ -198,6 +212,32 @@ const Profile = () => {
         </div>
       </div>
     </DefaultLayout>
+  )
+}
+
+//Display if marketplace has no NFT
+const NoItem = () => {
+  const history = useHistory()
+
+  return (
+    <div className='no-item-container d-flex align-items-center'>
+      <img src={noItem} alt='' />
+      <div>No items found</div>
+      <div>
+        Come back soon! Or try to browse something for you on our marketplace
+      </div>
+      <CustomButton
+        color='pink-hover-blue'
+        className='btn-browse'
+        onClick={() =>
+          history.push({
+            pathname: '/marketplace',
+          })
+        }
+      >
+        Browse Marketplace
+      </CustomButton>
+    </div>
   )
 }
 

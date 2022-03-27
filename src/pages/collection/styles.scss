@@ -113,5 +113,23 @@
     .collection-content {
       margin-top: 36px;
     }
+    .no-item-container {
+      margin: 0 auto;
+      margin-top: 80px;
+      flex-direction: column;
+      color: $darkGrayColor;
+      font-weight: 600;
+      font-size: 18px;
+      img {
+        width: 120px;
+      }
+      div:first-of-type {
+        margin-top: 24px;
+      }
+      .btn-browse {
+        margin-top: 24px;
+        width: fit-content;
+      }
+    }
   }
 }

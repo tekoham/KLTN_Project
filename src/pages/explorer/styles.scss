@@ -38,5 +38,28 @@
     .ant-tabs-nav-wrap {
       justify-content: flex-end;
     }
+    .no-item-title {
+      color: black;
+      font-size: 36px;
+      font-weight: 600;
+    }
+    .no-item-container {
+      margin: 0 auto;
+      padding: 80px;
+      flex-direction: column;
+      color: $darkGrayColor;
+      font-weight: 600;
+      font-size: 18px;
+      img {
+        width: 150px;
+      }
+      div:first-of-type {
+        margin-top: 24px;
+      }
+      .btn-browse {
+        margin-top: 24px;
+        width: fit-content;
+      }
+    }
   }
 }
