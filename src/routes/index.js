@@ -19,6 +19,7 @@ import {
   Profile,
   Collection,
   NFTDetail,
+  Activity,
 } from '../pages'
 
 const Routes = (props) => {
@@ -58,6 +59,7 @@ const Routes = (props) => {
           component={NFTDetail}
           key={Date.now()}
         />
+        <PublicRoute path='/activity' component={Activity} />
       </Switch>
     </div>
   )

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import DefaultLayout from '../../components/layout/default-layout'
 import { ListCustom } from '../../components/common'
 import CopyIcon from '../../assest/icon/copy-link.svg'
+import noItem from '../../assest/image/no-item.png'
 import { Pagination, message } from 'antd'
 import { useWindowSize } from '../../utils/useWindowSize'
 import { CustomTooltip, CustomButton } from '../../components/common'
@@ -16,6 +17,8 @@ const MOBILE_STEP = 4
 const Collection = () => {
   const [isMobile] = useWindowSize(576)
   const [isBioOpen, setIsBioOpen] = useState(false)
+  const [startOffset, setStartOffset] = useState(0)
+  const [endOffset, setEndOffset] = useState(isMobile ? MOBILE_STEP : STEP)
 
   const listData = new Array(24).fill(undefined).map((ele, index) => {
     return {
@@ -136,23 +139,54 @@ const Collection = () => {
               <span className='number'>{listData?.length}</span>
             </div>
           </div>
-          <div className='collection-content'>
-            <ListCustom
-              data={listData}
-              span={{ xxl: 6, xl: 8, lg: 12, md: 12, sm: 24, xs: 24 }}
-            />
 
-            <Pagination
-              className='collection-pagination'
-              defaultCurrent={1}
-              total={listData?.length}
-              pageSize={isMobile ? MOBILE_STEP : STEP}
-              onChange={onChangePage}
-            />
-          </div>
+          {listData?.length > 0 ? (
+            <div className='collection-content'>
+              <ListCustom
+                data={listData?.slice(startOffset, endOffset)}
+                span={{ xxl: 6, xl: 8, lg: 12, md: 12, sm: 24, xs: 24 }}
+              />
+              <Pagination
+                className='collection-pagination'
+                defaultCurrent={1}
+                total={listData?.length}
+                pageSize={isMobile ? MOBILE_STEP : STEP}
+                onChange={onChangePage}
+              />
+            </div>
+          ) : (
+            <NoItem />
+          )}
         </div>
       </div>
     </DefaultLayout>
+  )
+}
+
+//Display if collection has no NFT
+const NoItem = () => {
+  const history = useHistory()
+
+  return (
+    <div className='no-item-container d-flex align-items-center'>
+      <img src={noItem} alt='' />
+      <div>No items found</div>
+      <div>
+        This collection hasn't had any item yet! Try to browse something for you
+        on our marketplace
+      </div>
+      <CustomButton
+        color='pink-hover-blue'
+        className='btn-browse'
+        onClick={() =>
+          history.push({
+            pathname: '/marketplace',
+          })
+        }
+      >
+        Browse Marketplace
+      </CustomButton>
+    </div>
   )
 }
 
