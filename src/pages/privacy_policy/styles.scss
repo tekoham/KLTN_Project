@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+
+.privacy-policy-container {
+  color: black;
+  .privacy-policy-banner {
+    height: 320px;
+    background-image: url('../../assest/image/privacy-policy-banner.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: $whiteColor;
+    padding: 60px 80px;
+    .title {
+      max-width: 480px;
+      font-size: 45px;
+      line-height: 50px;
+      margin-top: 24px;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+  }
+  .privacy-policy-content {
+    padding: 100px 80px;
+    background-color: $whiteColor;
+    .privacy-policy-title {
+      font-size: 40px;
+      font-weight: 600;
+    }
+    .content {
+      margin-top: 48px;
+      .header {
+        font-size: 24px;
+        font-weight: 600;
+      }
+      .support-text {
+        font-size: 16px;
+        color: $darkGrayColor;
+        margin-top: 12px;
+      }
+      .support-text:last-of-type {
+        margin-top: 8px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+}

@@ -5,6 +5,10 @@ import Profile from './profile'
 import Collection from './collection'
 import NFTDetail from './nft-detail'
 import Activity from './activity'
+import Information from './information'
+import TermOfUse from './term_of_use'
+import PrivacyPolicy from './privacy_policy'
+import NotFound from './not-found'
 
 export {
   Home,
@@ -14,4 +18,8 @@ export {
   Collection,
   NFTDetail,
   Activity,
+  Information,
+  TermOfUse,
+  PrivacyPolicy,
+  NotFound,
 }

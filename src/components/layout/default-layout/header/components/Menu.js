@@ -20,7 +20,7 @@ const Menu = () => {
       title: 'Profile',
     },
     {
-      to: `/contact`,
+      to: `/information`,
       title: 'Contact Us',
     },
   ]

@@ -1,0 +1,215 @@
+@import '../../styles/variables.scss';
+
+.information-container {
+  color: black;
+  .information-banner {
+    height: 360px;
+    background-image: url('../../assest/image/information-banner.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: $whiteColor;
+    padding: 60px 80px;
+    .title {
+      max-width: 480px;
+      font-size: 45px;
+      line-height: 50px;
+      margin-top: 24px;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .subtitle {
+      color: $darkGrayColor;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  .information-content {
+    .about-us-container {
+      padding: 100px 80px;
+      background-color: $whiteColor;
+      .about-us-title {
+        font-size: 40px;
+        font-weight: 600;
+      }
+      .about-us-content {
+        .first-section {
+          .description-text {
+            margin-top: 15px;
+            font-size: 16px;
+            color: $darkGrayColor;
+          }
+          .about-us-image {
+            margin: 30px 0;
+            justify-content: space-between;
+            img {
+              width: 636px;
+              height: 550px;
+              border-radius: 15px;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+    .advertisement-container {
+      padding: 100px;
+      .advertisement {
+        background-color: $whiteColor;
+        border-radius: 15px;
+        padding: 30px 20px !important;
+        max-width: 420px !important;
+        margin-top: 32px !important;
+        .order {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 141px;
+          height: 56px;
+          margin-right: 24px;
+          border-radius: 8px;
+          background-color: $secondary-color;
+          color: $whiteColor;
+          font-weight: 600;
+        }
+        &-content {
+          max-width: 300px;
+        }
+        &-title {
+          font-size: 22px;
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+        &-description {
+          font-size: 16px;
+          color: $darkGrayColor;
+        }
+      }
+    }
+    .help-support-container {
+      padding: 100px 80px;
+      background-color: $whiteColor;
+      .help-support-title {
+        font-size: 40px;
+        font-weight: 600;
+      }
+      .supportText {
+        color: $primary_color;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      .ant-collapse {
+        .ant-collapse-item {
+          margin-top: 16px;
+          font-size: 16px;
+
+          .ant-collapse-header {
+            border-radius: 4px !important;
+            border: 1px solid $third_color;
+            background: $whiteColor;
+            color: $third_color;
+            display: flex;
+            align-items: center;
+            padding-left: 32px;
+            padding-right: 40px;
+
+            .collapse-icon {
+              padding: 0;
+              top: unset;
+            }
+          }
+
+          .ant-collapse-item-active {
+            .ant-collapse-header {
+              border-color: $primary_color;
+              color: $primary_color;
+              font-weight: bold;
+            }
+          }
+
+          .ant-collapse-content-box {
+            color: $third_color;
+            background-color: $primary_background_color;
+            padding: 32px;
+            border-radius: 0 0 8px 8px;
+          }
+        }
+      }
+    }
+    .contact-us-container {
+      padding: 100px 80px;
+      .contact-us-title {
+        font-size: 40px;
+        font-weight: 600;
+      }
+      .contact-us-content {
+        .website-author {
+          justify-content: space-around;
+          .first-author,
+          .second-author {
+            margin: 30px 0;
+            background-color: $whiteColor;
+            width: 440px;
+            border-radius: 15px;
+            padding: 30px 25px;
+            img {
+              width: 65px;
+              height: 65px;
+              border-radius: 15px;
+              object-fit: cover;
+              margin-bottom: 20px;
+            }
+            .name {
+              font-size: 22px;
+              font-weight: 500;
+              margin-bottom: 5px;
+            }
+            .position {
+              font-size: 16px;
+              color: $secondary-color;
+              margin-bottom: 15px;
+            }
+            .description {
+              font-size: 16px;
+              color: $darkGrayColor;
+            }
+          }
+        }
+        .website-author-information {
+          justify-content: space-between;
+          .location,
+          .phone-number,
+          .email {
+            background-color: $whiteColor;
+            width: 440px;
+            border-radius: 15px;
+            padding: 30px 25px;
+            .icon-container {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 12px;
+              background-color: $secondary-color;
+              width: 50px;
+              height: 50px;
+              border-radius: 50px;
+              img {
+                width: 28px;
+                height: 28px;
+              }
+            }
+            .title {
+              font-size: 22px;
+              font-weight: 500;
+              margin-bottom: 15px;
+            }
+            .support-text {
+              font-size: 16px;
+              color: $darkGrayColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

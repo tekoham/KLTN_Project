@@ -1,5 +1,6 @@
 import React from 'react'
 import { Menu, SearchHeaderBar } from './components'
+import { Link } from 'react-router-dom'
 import CustomButton from '../../../common/button'
 import './styles.scss'
 import SearchIcon from '../../../../assest/icon/search-icon.svg'
@@ -8,7 +9,10 @@ const Header = () => {
   return (
     <div className='header-container d-flex'>
       <div className='d-flex align-items-center'>
-        <img src='/logo.svg' alt='' />
+        <Link to='/'>
+          <img src='/logo.svg' alt='' />
+        </Link>
+
         <div className='d-flex search-box'>
           <SearchHeaderBar />
           <img src={SearchIcon} alt='' />

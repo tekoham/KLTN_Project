@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $third-color;
+  font-size: 24px;
+  font-weight: 700;
+  height: 600px;
+}

@@ -9,13 +9,13 @@ const Footer = () => {
     <div className='footer-container d-flex align-items-center'>
       <img src={LogoWhite} alt='logo' className='footer-logo' />
       <div className='footer-link'>
-        <Link to='/'>Marketplace</Link>
-        <Link to='/'>About us</Link>
-        <Link to='/'>Helps & Support</Link>
+        <Link to='/information'>Marketplace</Link>
+        <Link to='/information'>About us</Link>
+        <Link to='/information'>Helps & Support</Link>
       </div>
       <div className='policy'>
-        <Link to='/'>Terms of Use</Link>
-        <Link to='/'>Privacy Policy</Link>
+        <Link to='/term-of-use'>Terms of Use</Link>
+        <Link to='/privacy-policy'>Privacy Policy</Link>
       </div>
       <div className='footer-description'>
         This website is our graduation project about blockchain, provide digital
