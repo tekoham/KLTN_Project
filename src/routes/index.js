@@ -20,6 +20,10 @@ import {
   Collection,
   NFTDetail,
   Activity,
+  Information,
+  TermOfUse,
+  PrivacyPolicy,
+  NotFound,
 } from '../pages'
 
 const Routes = (props) => {
@@ -60,6 +64,10 @@ const Routes = (props) => {
           key={Date.now()}
         />
         <PublicRoute path='/activity' component={Activity} />
+        <PublicRoute path='/information' component={Information} />
+        <PublicRoute path='/term-of-use' component={TermOfUse} />
+        <PublicRoute path='/privacy-policy' component={PrivacyPolicy} />
+        <PublicRoute component={NotFound} />
       </Switch>
     </div>
   )

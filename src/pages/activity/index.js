@@ -31,7 +31,6 @@ const Activity = () => {
       }),
     [isMobile]
   )
-  console.log(listData)
   const [listDemo, setListDemo] = useState(listData)
 
   const onChangePage = (value) => {
@@ -59,9 +58,6 @@ const Activity = () => {
       window.scrollTo({ behavior: 'smooth', top: 220 })
       const _listData = listData?.filter((ele) => ele?.status === type)
       setListDemo(_listData)
-      console.log(_listData, 'ref list')
-      console.log(listDemo, 'current list')
-      console.log(type, 'type')
     } else {
       setListDemo(listData)
     }
