@@ -27,9 +27,11 @@ const Header = () => {
         >
           Create
         </CustomButton>
-        <CustomButton color='pink' display='inline' className='connect-btn'>
-          Connect Wallet
-        </CustomButton>
+        <Link to='/connect'>
+          <CustomButton color='pink' display='inline' className='connect-btn'>
+            Connect Wallet
+          </CustomButton>
+        </Link>
       </div>
     </div>
   )

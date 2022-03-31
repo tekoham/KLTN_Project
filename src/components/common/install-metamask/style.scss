@@ -1,0 +1,21 @@
+.install-metamask {
+  margin: auto;
+  &__wrap {
+    align-items: center;
+  }
+  &__link {
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  &__logo {
+    float: right;
+    height: 30px;
+    width: 30px;
+  }
+  .title {
+    color: black;
+  }
+}

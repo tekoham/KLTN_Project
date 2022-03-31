@@ -10,6 +10,9 @@ import { useSelector } from 'react-redux'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 import AppContainer from '../AppContainer'
 import ErrorBoundary from '../components/common/error-boundary'
+import ConnectWrongNetwork from '../components/common/wrongNetwork'
+import InstallMetameask from '../components/common/install-metamask'
+import RejectSignModal from '../components/common/reject-sign-modal'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
 import {
@@ -23,6 +26,7 @@ import {
   Information,
   TermOfUse,
   PrivacyPolicy,
+  EditProfile,
   NotFound,
 } from '../pages'
 
@@ -67,6 +71,7 @@ const Routes = (props) => {
         <PublicRoute path='/information' component={Information} />
         <PublicRoute path='/term-of-use' component={TermOfUse} />
         <PublicRoute path='/privacy-policy' component={PrivacyPolicy} />
+        <PrivateRoute path='/edit-profile' component={EditProfile} />
         <PublicRoute component={NotFound} />
       </Switch>
     </div>
@@ -78,6 +83,10 @@ const RoutesHistory = withRouter(Routes)
 const routing = function createRouting() {
   return (
     <>
+      <InstallMetameask />
+      <RejectSignModal />
+      <ConnectWrongNetwork />
+      <NotificationContainer />
       <Router>
         <AppContainer>
           <ErrorBoundary>

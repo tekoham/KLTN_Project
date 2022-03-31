@@ -1,12 +1,84 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { loginWallet } from '../../store/actions/user'
+import ReactLoading from 'react-loading'
+import { useWeb3React } from '@web3-react/core'
+import { useWindowSize } from '../../utils/useWindowSize'
+import { walletconnect, injected } from '../../blockchain/connectors'
+import { loginApiActions } from '../../store/constants/login'
 import ArrowLeft from '../../assest/icon/back-arrow-left.svg'
 import MetamaskImage from '../../assest/image/metamask-image.png'
 import { Modal } from 'antd'
 import './styles.scss'
 
+const metamask_deeplink = process.env.REACT_APP_METAMASK_DEEPLINK
+
 const ConnectWallet = (props) => {
+  const { activate, account, library, chainId } = useWeb3React()
+  const [isMobile] = useWindowSize(768)
   const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const dispatch = useDispatch()
+
+  // const { openModalRejectConnect } = useSelector((state) => state.modal)
+
+  useEffect(() => {
+    if (!!account && !!library) {
+      dispatch(loginWallet(account.toLowerCase(), library, chainId))
+    }
+  }, [account, library])
+
+  useEffect(() => {
+    const { location, history } = props
+    // if (data?.account) {
+    //   if (location?.state?.from.includes('user')) {
+    //     history.push(
+    //       currentUserProfile?.address
+    //         ? `/user/${currentUserProfile?.address}`
+    //         : `/`
+    //     )
+    //   } else if (location?.state?.from.includes('owner')) {
+    //     history.push(`/user/${data?.account}`)
+    //   } else if (location?.state?.from.includes('edit')) {
+    //     history.push('/edit-profile')
+    //   } else if (location?.state?.from.includes('collectible')) {
+    //     history.push(
+    //       collectible?.id ? `/collectible/${collectible?.id}` : `/`
+    //     )
+    //   } else if (location?.state?.from.includes('collection')) {
+    //     history.push(`/collection/${collection?.shortUrl}`)
+    //   } else if (location?.state?.from.includes('activity')) {
+    //     history.push(`/activity`)
+    //   }
+    //  else {
+    //     history.push('/')
+    //   }
+    // }
+  }, [props, dispatch])
+  const handleMetamask = async () => {
+    // dispatch({ type: loginApiActions.OPEN_LOADING_CONNECT })
+    if (window?.ethereum?.isMetaMask) {
+      // wc -> metamask -> close wc -> login by metamask
+      if ('walletconnect' in localStorage) {
+        await walletconnect.activate()
+        const _provider = await walletconnect.getProvider()
+        await _provider.disconnect()
+      }
+      if (!!account && !!library) {
+        // dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
+        dispatch(loginWallet(account.toLowerCase(), library, chainId))
+      } else {
+        await activate(injected)
+      }
+    } else if (isMobile && metamask_deeplink) {
+      window.open(metamask_deeplink)
+      return
+    } else {
+      // dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
+      window.open('https://metamask.io/download.html')
+    }
+  }
 
   const showModal = () => {
     setIsModalVisible(true)
@@ -36,7 +108,7 @@ const ConnectWallet = (props) => {
             What is a wallet?
           </span>
         </div>
-        <div className='wallet-detail'>
+        <div className='wallet-detail' onClick={handleMetamask}>
           <img src={MetamaskImage} alt='metamask icon' />
           <div className='wallet-name'>Metamask</div>
           <div className='wallet-description'>

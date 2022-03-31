@@ -1,0 +1,55 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.wrong-network-modal {
+  .ant-modal-content {
+    border-radius: 16px !important;
+    margin: 0 auto;
+    .ant-modal-body {
+      width: 410px;
+      height: 220px;
+      border-radius: 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .modal-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+        div {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 30px;
+          img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+        .title {
+          font-weight: bold;
+          font-size: 24px;
+          color: $primary_color;
+        }
+        .description {
+          font-size: 16px;
+          margin-top: 16px;
+          color: $third_color;
+        }
+      }
+    }
+  }
+  @include up-to-size('sm') {
+    .ant-modal-content {
+      width: 343px;
+      margin: 0 auto;
+      .ant-modal-body {
+        width: 343px;
+        height: 209px;
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import ErrorBoundary from './error-boundary'
 import CustomTooltip from './tooltip'
 import CustomCarousel from './carousel'
 import ListCustom from './list-custom'
+import InputCustom from './input'
 
 export {
   CustomButton,
@@ -14,4 +15,5 @@ export {
   CustomTooltip,
   CustomCarousel,
   ListCustom,
+  InputCustom,
 }

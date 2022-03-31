@@ -1,0 +1,146 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.update-profile-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 16px 100px 16px;
+
+  @include up-to-size('md') {
+    padding: 38px 16px;
+  }
+  .update-profile-form {
+    padding: 60px 72px !important;
+    color: $darkGrayColor;
+    background-color: $whiteColor;
+    width: fit-content;
+    max-width: 846px;
+    border-radius: 16px;
+    display: block;
+    white-space: pre-wrap;
+    box-sizing: border-box;
+    @include up-to-size('md') {
+      padding: 20px 24px !important;
+    }
+
+    .select-profile-avatar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 48px;
+      & > :nth-child(2) {
+        width: max-content;
+        margin-left: 32px;
+        @include up-to-size('md') {
+          margin-left: 24px;
+        }
+        & > :first-child {
+          color: $darkGrayColor;
+          margin-bottom: 24px;
+          display: block;
+          word-break: keep-all;
+          @include up-to-size('md') {
+            margin-bottom: 16px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .input-group {
+      margin-top: 32px;
+      & > * {
+        margin-top: 32px;
+      }
+      .sign-message {
+        font-weight: 700;
+        color: $primary_color;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .confirm {
+        font-weight: 700;
+        color: $primary_color;
+        cursor: pointer;
+      }
+    }
+    .verification-group {
+      margin: 42px 0px 40px 0px;
+      & > :nth-child(2) {
+        margin-top: -4px;
+        margin-bottom: 24px;
+      }
+      span {
+        display: block;
+      }
+    }
+    .ant-form-item {
+      margin-bottom: 0px;
+    }
+    .title {
+      font-weight: 700;
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+      color: $primary_color;
+    }
+
+    .sub {
+      color: $subTextColorFontWhite;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    .label {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: $primary_color;
+    }
+
+    .description {
+      color: $darkGrayColor;
+      font-size: 16px;
+    }
+
+    .prefix {
+      color: $primary_color;
+      font-size: 16px;
+    }
+    .err-underline {
+      margin-top: 12px;
+      color: red;
+      font-size: 12px;
+    }
+    .confirm {
+      color: $primary_color;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+}
+
+.modal-custom {
+  display: flex;
+  justify-content: center;
+  .ant-modal-content {
+    background: $whiteColor !important;
+    width: 364px !important;
+    color: $primary_color;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px !important;
+    border: 1px solid $primary_color !important;
+    .ant-modal-body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 0px !important;
+      div {
+        margin: 0px;
+        margin-left: 18px;
+      }
+    }
+  }
+}

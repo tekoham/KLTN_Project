@@ -23,13 +23,6 @@ const AppContainer = (props) => {
   // const dispatch = useDispatch()
 
   // const balance = useSelector((state) => state.user?.data?.ethBalance ?? '0')
-  // const wethBalance = useSelector(
-  //   (state) => state?.user?.data?.wethBalance ?? '0'
-  // )
-  // const paceToken = useSelector((state) => state?.user?.data?.paceToken ?? '0')
-  // const usdtBalance = useSelector(
-  //   (state) => state?.user?.data?.usdtBalance ?? '0'
-  // )
   // const { account, connector, library, chainId } = useWeb3React()
   // const triedEager = useEagerConnect()
 
@@ -49,33 +42,14 @@ const AppContainer = (props) => {
 
   //     const newBalance = utils.formatEther(rawBalance)
 
-  //     //weth
-  //     const [balanceWETH] = await checkWETHBalance(account)
-  //     const newWETH = utils.formatEther(balanceWETH)
-
-  //     //get pace token from metamask
-  //     const [tokenClaimed] = await checkPaceTokenBalance(account)
-  //     const newPaceToken = utils.formatEther(tokenClaimed)
-
-  //     //usdt
-  //     const [balanceUSDT] = await checkUsdtBalance(account)
-  //     const newUSDT =
-  //       balanceUSDT && convertBigNumberValueToNumber(balanceUSDT, 6)
-
   //     if (
-  //       newBalance === balance &&
-  //       newWETH === wethBalance &&
-  //       newPaceToken === paceToken &&
-  //       usdtBalance === newUSDT.toString()
+  //       newBalance === balance
   //     )
   //       return
   //     dispatch({
   //       type: userActions.UPDATE_BALANCE,
   //       payload: {
-  //         ethBalance: newBalance,
-  //         wethBalance: newWETH,
-  //         paceToken: newPaceToken,
-  //         usdtBalance: newUSDT.toString(),
+  //         ethBalance: newBalance
   //       },
   //     })
   //   }
@@ -84,7 +58,6 @@ const AppContainer = (props) => {
   //   return () => {
   //     library.removeListener('block', onNewBlock)
   //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [account, balance])
 
   // useEffect(() => {
@@ -128,7 +101,6 @@ const AppContainer = (props) => {
   //     library.provider?.removeListener('chainChanged', onChangeNetwork) // need func reference to remove correctly
   //     library.provider?.removeListener('networkChanged', onChangeNetworkChanged)
   //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [isConnected, library])
 
   // useEffect(() => {
