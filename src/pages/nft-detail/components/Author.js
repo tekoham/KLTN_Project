@@ -39,7 +39,7 @@ const Author = (props) => {
           ></img>
           {listData?.owner?.verified ? (
             <img
-              className='verifiedIcon'
+              className='verified-icon'
               src={VerifiedIcon}
               alt='verified icon'
             ></img>
@@ -63,7 +63,7 @@ const Author = (props) => {
           ></img>
           {listData?.collection?.verified ? (
             <img
-              className='verifiedIcon'
+              className='verified-icon'
               src={VerifiedIcon}
               alt='verified icon'
             ></img>

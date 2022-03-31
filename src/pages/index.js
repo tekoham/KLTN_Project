@@ -8,6 +8,7 @@ import Activity from './activity'
 import Information from './information'
 import TermOfUse from './term_of_use'
 import PrivacyPolicy from './privacy_policy'
+import EditProfile from './edit_profile'
 import NotFound from './not-found'
 
 export {
@@ -21,5 +22,6 @@ export {
   Information,
   TermOfUse,
   PrivacyPolicy,
+  EditProfile,
   NotFound,
 }

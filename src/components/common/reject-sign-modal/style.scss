@@ -1,0 +1,56 @@
+@import '../../../styles/variables.scss';
+
+.reject-sign-modal {
+    .ant-modal-content {
+        border-radius: 16px !important;
+
+        .ant-modal-body {
+            width: 410px;
+            height: 318px;
+            border-radius: 16px;
+            padding-left: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .modal-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: center;
+                text-align: center;
+                div {
+                    display: flex;
+                    justify-content: center;
+                    // margin-bottom: 25px;
+                    // margin-top: -40px;
+                    img {
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+                .title {
+                    font-weight: bold;
+                    font-size: 24px;
+                    color: $primary_color;
+                }
+                .description {
+                    font-size: 16px;
+                    color: $third_color;
+                }
+
+                .btn-sign-wallet {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .ant-btn-custom {
+                        margin-top: 24px;
+                        width: 330px;
+                    }
+                }
+            }
+        }
+    }
+}

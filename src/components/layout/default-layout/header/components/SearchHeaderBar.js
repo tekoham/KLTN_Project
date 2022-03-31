@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 import { AutoComplete, Card, Tooltip } from 'antd'
 // import { roundNumber, setTokenType } from 'utils/func'
 import { debounce } from 'lodash'
-import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 // import nftService from 'service/nftService'
 // import * as message from 'utils/custom-message'
@@ -15,7 +14,6 @@ import noItem from '../../../../../assest/image/no-item.png'
 const { Option } = AutoComplete
 
 const SearchHeaderBar = () => {
-  const { t } = useTranslation()
   const globalLoading = useSelector((state) => state?.globalLoading)
 
   const [keyword, setKeyword] = useState(null)

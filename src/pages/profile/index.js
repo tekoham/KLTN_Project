@@ -96,7 +96,7 @@ const Profile = () => {
         <div className='profile-banner d-flex'>
           <div className='title'>Author Profile</div>
           <div className='edit-profile-btn-container'>
-            <Link to='/'>
+            <Link to='/edit-profile'>
               <CustomButton color='pink-hover-blue' shape='small-radius'>
                 Edit Profile
               </CustomButton>
