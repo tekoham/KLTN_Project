@@ -98,3 +98,9 @@ export const getCustomeTimeLeft = (till) => {
   if (duration <= 86400) return `in 1 day`
   return `in ${Math.ceil(duration / 86400)} days`
 }
+
+export const addCustomDay = (daysToAdd) => {
+  if (!daysToAdd) return
+  const currentTime = moment().unix()
+  return currentTime + 86400 * daysToAdd
+}

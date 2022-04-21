@@ -26,7 +26,7 @@ const Activity = () => {
           status: status[Math.floor(Math.random() * status.length)],
           price: Math.random().toFixed(3),
           image: randomImage(),
-          userName: 'Changgggg',
+          userName: 'KienDaoTrung',
         }
       }),
     [isMobile]

@@ -60,24 +60,31 @@ const CardItemSmall = ({ data }) => {
   }, [isStartTimeAfterCurrent])
 
   const renderTimeLeft = useCallback(() => {
-    if (isStartTimeAfterCurrent) {
-      return (
-        <div className='time-counter'>
-          {getDiffUnixTime(counter, currentTime)[0]}:
-          {getDiffUnixTime(counter, currentTime)[1]}:
-          {getDiffUnixTime(counter, currentTime)[2]}:
-          {getDiffUnixTime(counter, currentTime)[3]}
-        </div>
-      )
+    if (counter) {
+      if (isStartTimeAfterCurrent) {
+        if (counter !== 0) {
+          return (
+            <div className='time-counter'>
+              {getDiffUnixTime(counter, currentTime)[0]}:
+              {getDiffUnixTime(counter, currentTime)[1]}:
+              {getDiffUnixTime(counter, currentTime)[2]}:
+              {getDiffUnixTime(counter, currentTime)[3]}
+            </div>
+          )
+        }
+      } else {
+        if (counter !== 0) {
+          return (
+            <div className='time-counter'>
+              {getDiffUnixTime(counter, currentTime)[0]}:
+              {getDiffUnixTime(counter, currentTime)[1]}:
+              {getDiffUnixTime(counter, currentTime)[2]}:
+              {getDiffUnixTime(counter, currentTime)[3]}
+            </div>
+          )
+        }
+      }
     }
-    return (
-      <div className='time-counter'>
-        {getDiffUnixTime(counter, currentTime)[0]}:
-        {getDiffUnixTime(counter, currentTime)[1]}:
-        {getDiffUnixTime(counter, currentTime)[2]}:
-        {getDiffUnixTime(counter, currentTime)[3]}
-      </div>
-    )
   }, [isStartTimeAfterCurrent, counter, currentTime])
 
   return (
@@ -124,7 +131,7 @@ const CardItemSmall = ({ data }) => {
               size={{ xs: 12, sm: 16, md: 22, lg: 30, xl: 30, xxl: 30 }}
               src='/avatar.jpg'
             />
-            Created by <div className='creator-name'>@Changgggg</div>
+            Created by <div className='creator-name'>@KienDaoTrung</div>
           </div>
           <div className='details-btn-container'>
             <CustomButton

@@ -1,0 +1,51 @@
+@import '../../../../styles/variables.scss';
+
+.create-nft-marketPlace_btnGroup {
+  display: flex;
+  justify-content: space-between;
+
+  .create-nft-marketPlace_btn {
+    flex: 1;
+    cursor: pointer;
+    background: $whiteColor;
+    height: 136px;
+    border: 1px solid rgba(163, 174, 208, 0.3);
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .create-nft-marketPlace_btn__icon {
+      margin-bottom: 17px;
+      opacity: 0.5;
+    }
+    .restore-icon {
+      width: 28px;
+      height: 24px;
+    }
+    & > span {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      color: $third_color;
+    }
+  }
+
+  .create-nft-marketPlace_btn.active {
+    border: 1px solid $secondary-color;
+    & > span {
+      color: $primary_color;
+    }
+    .create-nft-marketPlace_btn__icon {
+      opacity: 1;
+    }
+  }
+  .create-nft-marketPlace_btn.mr {
+    margin-right: 10px;
+  }
+  .create-nft-marketPlace_btn.ml {
+    margin-left: 10px;
+  }
+}

@@ -47,6 +47,9 @@ const CustomButton = (props) => {
     if (color === 'pink-hover-blue') {
       overrideClassNames.push('ant-btn-color-pink-hover-blue')
     }
+    if (color === 'pink-hover-charcoal') {
+      overrideClassNames.push('ant-btn-color-pink-hover-charcoal')
+    }
     if (color === 'charcoal-blue') {
       overrideClassNames.push('ant-btn-color-charcoal-blue')
     }

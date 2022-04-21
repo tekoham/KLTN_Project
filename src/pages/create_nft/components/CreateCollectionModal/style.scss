@@ -1,0 +1,54 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
+
+.ant-modal.create-collection_custom {
+  width: 628px !important;
+  .ant-modal-content {
+    border-radius: 16px !important;
+    max-width: 100%;
+    width: 628px;
+  }
+
+  .create-collection_header {
+    margin-bottom: 32px;
+    .create-collection_title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 36px;
+      color: $primary_color;
+    }
+  }
+
+  .create-collection_block {
+    margin-bottom: 30px;
+    .prefix {
+      color: $primary_color;
+      font-size: 16px;
+    }
+  }
+
+  .create-collection_btnGroups {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .create-collection_btn {
+      flex: 1;
+      &.mr {
+        margin-right: 12px;
+      }
+
+      &.ml {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  .create-collection-fix-all-error {
+    margin-top: 12px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    color: red;
+  }
+}

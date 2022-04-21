@@ -1,0 +1,39 @@
+@import '../../../styles/variables';
+
+.ant-switch.switch-custom.ant-switch-checked {
+  background-color: $whiteColor;
+  border: 1px solid #3ada81;
+  display: flex;
+  align-items: center;
+  height: 24px;
+  .ant-switch-handle {
+    top: 50%;
+    transform: translateY(-50%);
+    &::before {
+      background: #3ada81;
+    }
+  }
+  .ant-switch-inner {
+    line-height: 1;
+    color: #3ada81;
+  }
+}
+
+.ant-switch.switch-custom {
+  background-color: $whiteColor;
+  border: 1px solid $third_color;
+  display: flex;
+  align-items: center;
+  height: 24px;
+  .ant-switch-handle {
+    top: 50%;
+    transform: translateY(-50%);
+    &::before {
+      background: $third_color;
+    }
+  }
+  .ant-switch-inner {
+    line-height: 1;
+    color: $third_color;
+  }
+}

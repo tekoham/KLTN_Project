@@ -24,13 +24,14 @@ const Collection = () => {
     return {
       id: index,
       name: stringRandom(true),
-      startDate: Date.now(),
-      expireDate: Math.floor(Math.random() * Date.now()) + 1000,
+      startDate: parseInt(Date.now() / 1000),
+      expireDate:
+        Math.floor(Math.random() * 86400) + Number(parseInt(Date.now() / 1000)),
       type: type[Math.floor(Math.random() * type.length)],
       price: Math.random().toFixed(3),
       likes: Math.floor(Math.random() * 100) + 1,
       image: randomImage(),
-      creator: 'Changgggg',
+      creator: 'KienDaoTrung',
     }
   })
 
@@ -86,8 +87,8 @@ const Collection = () => {
             <div className='collection-avatar'>
               <img className='avatar' src='/avatar.jpg' alt='avatar' />
             </div>
-            <CustomTooltip placement='topLeft' title='Changgggggggggg'>
-              <div className='collection-name'>Changgggggggggg</div>
+            <CustomTooltip placement='topLeft' title='KienDaoTrunggggggg'>
+              <div className='collection-name'>KienDaoTrunggggggg</div>
             </CustomTooltip>
             <div className='collection-description'>
               {bio?.length != 0 ? (

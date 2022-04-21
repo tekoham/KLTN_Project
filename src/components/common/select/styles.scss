@@ -1,0 +1,92 @@
+@import '../../../styles/variables';
+
+.select-custom-wrapper {
+    position: relative;
+
+    .select-custom_prefix {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 100.4%;
+        color: $primary_color;
+
+        .select-custom_prefix__icon {
+            margin-right: 12px;
+        }
+    }
+}
+
+.ant-select.ant-select-custom {
+    display: block;
+    .ant-select-selector {
+        height: 50px !important;
+        padding: 0 24px !important;
+        border: 1px solid rgba(163, 174, 208, 0.3) !important;
+        box-sizing: border-box;
+        border-radius: 8px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            border: 1px solid $primary_color !important;
+        }
+    }
+    .ant-select-selection-placeholder {
+        color: $third_color;
+    }
+
+    .ant-select-selection-item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #002979;
+    }
+
+    .ant-select-arrow {
+        color: #002979;
+    }
+}
+
+.ant-select-dropdown.custom-dropdown {
+    border-radius: 16px;
+    padding: 0;
+    z-index: 1001; //to apear in front of ant modals
+}
+
+.select-custom_option.ant-select-item-option {
+    height: 50px;
+    padding: 0 24px;
+
+    &.ant-select-item-option-selected {
+        background-color: rgba(0, 41, 121, 0.2);
+    }
+    .ant-select-item-option-content {
+        display: flex;
+        align-items: center;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        color: $primary_color;
+    }
+}
+
+.select-custom_option__icon__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-custom_option__icon {
+    margin-right: 16px;
+}

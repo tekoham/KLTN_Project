@@ -9,18 +9,10 @@ import classNames from 'classnames'
 import './style.scss'
 
 //image
-import CancelIcon from '../../../asset/icon/cancel-icon.svg'
+import CancelIcon from '../../../assest/icon/cancel-icon.svg'
 
 const FILE_MAX_SIZE = 100000000
 const SUPPORTED_FILE_TYPE = [
-  'image/png',
-  'image/jpg',
-  'image/jpeg',
-  'image/webp',
-  'image/gif',
-]
-
-const PREVIEW_SUPPORTED_FILE_TYPE = [
   'image/png',
   'image/jpg',
   'image/jpeg',
@@ -46,7 +38,7 @@ const CustomDragger = ({
   className,
   onChange,
   setUploadFile,
-  setPreviewFile,
+  setAvatar,
   ...restProps
 }) => {
   const [image, setImage] = useState(null)

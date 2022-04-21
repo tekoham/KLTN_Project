@@ -60,7 +60,19 @@ const CardItem = ({ data }) => {
   }, [isStartTimeAfterCurrent])
 
   const renderTimeLeft = useCallback(() => {
-    if (isStartTimeAfterCurrent) {
+    if (counter) {
+      if (isStartTimeAfterCurrent) {
+        return (
+          <div className='auction-time-container'>
+            <div className='time-counter'>
+              {getDiffUnixTime(counter, currentTime)[0]}:
+              {getDiffUnixTime(counter, currentTime)[1]}:
+              {getDiffUnixTime(counter, currentTime)[2]}:
+              {getDiffUnixTime(counter, currentTime)[3]}
+            </div>
+          </div>
+        )
+      }
       return (
         <div className='auction-time-container'>
           <div className='time-counter'>
@@ -72,16 +84,6 @@ const CardItem = ({ data }) => {
         </div>
       )
     }
-    return (
-      <div className='auction-time-container'>
-        <div className='time-counter'>
-          {getDiffUnixTime(counter, currentTime)[0]}:
-          {getDiffUnixTime(counter, currentTime)[1]}:
-          {getDiffUnixTime(counter, currentTime)[2]}:
-          {getDiffUnixTime(counter, currentTime)[3]}
-        </div>
-      </div>
-    )
   }, [isStartTimeAfterCurrent, counter, currentTime])
 
   return (
@@ -133,7 +135,7 @@ const CardItem = ({ data }) => {
                 <div className='item-title'>{data?.name}</div>
               </CustomTooltip>
               <div className='creator'>
-                Created by <div className='creator-name'>@Changgggg</div>
+                Created by <div className='creator-name'>@KienDaoTrung</div>
               </div>
             </div>
             <CustomButton

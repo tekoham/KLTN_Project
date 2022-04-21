@@ -12,7 +12,7 @@ const TradingHistory = () => {
       avatar: randomImage(),
       verified: verified[Math.floor(Math.random() * verified.length)],
       action: action[Math.floor(Math.random() * action.length)],
-      name: 'Changgggggg',
+      name: 'KienDaoTrunggg',
       actionHappenedAt: Math.floor(Math.random() * Date.now()) - 100,
       price: Math.random().toFixed(3),
     }
