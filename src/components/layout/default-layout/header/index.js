@@ -20,13 +20,15 @@ const Header = () => {
       </div>
       <Menu />
       <div>
-        <CustomButton
-          color='charcoal-blue'
-          display='inline'
-          className='create-btn'
-        >
-          Create
-        </CustomButton>
+        <Link to='/create'>
+          <CustomButton
+            color='charcoal-blue'
+            display='inline'
+            className='create-btn'
+          >
+            Create
+          </CustomButton>
+        </Link>
         <Link to='/connect'>
           <CustomButton color='pink' display='inline' className='connect-btn'>
             Connect Wallet

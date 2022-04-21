@@ -1,0 +1,127 @@
+@import '../../../../styles/variables.scss';
+
+.dateTimeCustom {
+  visibility: hidden;
+}
+
+.dateTimeModal {
+  visibility: hidden;
+}
+
+.disableTimeModal {
+  :global(.ant-picker-dropdown) {
+    display: none !important;
+  }
+}
+
+:global(.ant-picker-dropdown) {
+  :global(.ant-picker-header-view) {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px !important;
+    line-height: 22px !important;
+
+    color: $primary_color;
+  }
+  @media screen and (max-width: 576px) {
+    left: 50% !important;
+    transform: translate(-50%, 0);
+    :global(.ant-picker-datetime-panel) {
+      flex-direction: column;
+      :global(.ant-picker-time-panel) {
+        height: 100px;
+        overflow-y: hidden;
+      }
+      :global(.ant-picker-header) {
+        margin-bottom: 10px;
+      }
+      :global(.ant-picker-time-panel-column) {
+        height: 100px;
+        overflow-y: auto !important;
+      }
+    }
+  }
+  :global(.ant-picker-prev-icon) {
+    color: $primary_color;
+  }
+  :global(.ant-picker-next-icon) {
+    color: $primary_color;
+  }
+  :global(.ant-picker-super-prev-icon) {
+    color: $primary_color;
+  }
+  :global(.ant-picker-super-next-icon) {
+    color: $primary_color;
+  }
+
+  :global(.ant-picker-cell) {
+    :global(.ant-picker-cell-inner) {
+      min-width: 36px !important;
+      height: 36px !important;
+      line-height: 36px !important;
+    }
+  }
+
+  :global(.ant-picker-cell-today) {
+    :global(.ant-picker-cell-inner) {
+      border: 1px solid rgba(163, 174, 208, 0.3);
+      border-radius: 50%;
+      min-width: 36px !important;
+      height: 36px !important;
+      line-height: 36px !important;
+      &::before {
+        border: none !important;
+      }
+    }
+  }
+
+  :global(.ant-picker-cell-selected) {
+    :global(.ant-picker-cell-inner) {
+      border: 1px solid rgba(163, 174, 208, 0.3);
+      border-radius: 50%;
+      min-width: 36px !important;
+      height: 36px !important;
+      line-height: 36px !important;
+      background: $primary_color !important;
+      &::before {
+        border: none !important;
+      }
+    }
+  }
+
+  :global(.ant-picker-time-panel-cell-selected) {
+    :global(.ant-picker-time-panel-cell-inner) {
+      background: rgba(163, 174, 208, 0.3) !important;
+      color: $primary_color !important;
+    }
+  }
+
+  :global(.ant-picker-time-panel) {
+    :global(.ant-picker-header) {
+      height: 41px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  :global(.ant-picker-footer) {
+    :global(.ant-picker-ranges) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      :global(.ant-picker-now) {
+        :global(.ant-picker-now-btn) {
+          color: $primary_color !important;
+        }
+      }
+
+      :global(.ant-picker-ok) {
+        :global(.ant-btn) {
+          background: $primary_color;
+          color: #ffffff;
+          border: none;
+        }
+      }
+    }
+  }
+}

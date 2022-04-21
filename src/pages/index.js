@@ -9,6 +9,7 @@ import Information from './information'
 import TermOfUse from './term_of_use'
 import PrivacyPolicy from './privacy_policy'
 import EditProfile from './edit_profile'
+import CreateNFT from './create_nft'
 import NotFound from './not-found'
 
 export {
@@ -23,5 +24,6 @@ export {
   TermOfUse,
   PrivacyPolicy,
   EditProfile,
+  CreateNFT,
   NotFound,
 }

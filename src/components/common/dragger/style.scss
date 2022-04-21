@@ -1,94 +1,104 @@
 @import '../../../styles/variables.scss';
 
 .ant-upload.ant-upload-drag.upload-dragger-custom {
-    background: $white !important;
-    border: 1px solid rgba(163, 174, 208, 0.3);
-    box-sizing: border-box;
-    border-radius: 16px;
-    min-height: 156px;
+  background: $whiteColor !important;
+  border: 1px solid rgba(163, 174, 208, 0.3);
+  box-sizing: border-box;
+  border-radius: 16px;
+  min-height: 156px;
 
-    &.active {
-        height: auto;
-        cursor: pointer;
+  &.active {
+    height: auto;
+    cursor: pointer;
+  }
+
+  .ant-upload {
+    padding: 24px;
+  }
+
+  .upload-dragger-custom_title {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+
+    color: $third_color;
+  }
+
+  .upload-dragger-custom_btn {
+    margin-top: 24px;
+    background: $primary_color;
+    border-radius: 8px;
+    color: $whiteColor;
+    height: 36px;
+    width: auto;
+    display: inline-block;
+    transition: background 0.5s ease-in-out;
+  }
+
+  .upload-dragger-custom_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .upload-dragger-custom_wrap {
+    position: relative;
+    .upload-dragger-custom_cancelIcon {
+      cursor: pointer;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(163, 174, 208, 0.3);
+      box-sizing: border-box;
+      box-shadow: 0px 8px 32px rgba(52, 87, 210, 0.1);
+      background: $whiteColor;
+      right: -10px;
+      top: -10px;
+      z-index: 10;
     }
+  }
 
-    .ant-upload {
-        padding: 24px;
+  .upload-dragger-custom_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .upload-dragger-custom_wrap {
+    position: relative;
+    .upload-dragger-custom_cancelIcon {
+      cursor: pointer;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(163, 174, 208, 0.3);
+      box-sizing: border-box;
+      box-shadow: 0px 8px 32px rgba(52, 87, 210, 0.1);
+      background: $whiteColor;
+      right: -10px;
+      top: -10px;
+      z-index: 10;
     }
+  }
 
-    .upload-dragger-custom_title {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-
-        color: $third_color;
-    }
-
+  &:hover {
     .upload-dragger-custom_btn {
-        margin-top: 24px;
-        background: rgba(0, 41, 121, 0.2);
-        border-radius: 8px;
-        color: #002979;
-        height: 36px;
-        width: auto;
-        display: inline-block;
+      background: $secondary-color;
     }
-
-    .upload-dragger-custom_image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .upload-dragger-custom_title {
+      color: $secondary-color;
     }
-
-    .upload-dragger-custom_wrap {
-        position: relative;
-        .upload-dragger-custom_cancelIcon {
-            cursor: pointer;
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            border: 1px solid rgba(163, 174, 208, 0.3);
-            box-sizing: border-box;
-            box-shadow: 0px 8px 32px rgba(52, 87, 210, 0.1);
-            background: $white;
-            right: -10px;
-            top: -10px;
-            z-index: 10;
-        }
-    }
-
-    .upload-dragger-custom_image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .upload-dragger-custom_wrap {
-        position: relative;
-        .upload-dragger-custom_cancelIcon {
-            cursor: pointer;
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            border: 1px solid rgba(163, 174, 208, 0.3);
-            box-sizing: border-box;
-            box-shadow: 0px 8px 32px rgba(52, 87, 210, 0.1);
-            background: $white;
-            right: -10px;
-            top: -10px;
-            z-index: 10;
-        }
-    }
+  }
 }
 
 .ant-form-item-has-error .ant-upload.ant-upload-drag.upload-dragger-custom {
-    border: 1px solid $red;
+  border: 1px solid red;
 }

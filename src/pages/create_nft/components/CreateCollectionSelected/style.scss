@@ -1,0 +1,47 @@
+@import '../../../../styles/variables.scss';
+
+.create-nft-collections {
+  display: flex;
+  flex-wrap: wrap;
+
+  .create-nft-collections_item {
+    width: 136px;
+    height: 136px;
+    border: 1px solid rgba(163, 174, 208, 0.3);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    &.active {
+      border: 1px solid $secondary-color;
+    }
+
+    .system-collection {
+      height: 40px !important;
+      width: 40px !important;
+      object-fit: contain !important;
+    }
+
+    .create-nft-collections_item__icon {
+      margin-bottom: 17px;
+      object-fit: cover;
+      width: 60px;
+      height: 60px;
+    }
+
+    .create-nft-collections_item__title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      color: $primary_color;
+      max-width: 80px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

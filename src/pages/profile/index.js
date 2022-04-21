@@ -27,13 +27,14 @@ const Profile = () => {
     return {
       id: index,
       name: stringRandom(true),
-      startDate: Date.now(),
-      expireDate: Math.floor(Math.random() * Date.now()) + 400,
+      startDate: parseInt(Date.now() / 1000),
+      expireDate:
+        Math.floor(Math.random() * 86400) + parseInt(Date.now() / 1000),
       type: type[Math.floor(Math.random() * type.length)],
       price: Math.random().toFixed(3),
       likes: Math.floor(Math.random() * 100) + 1,
       image: randomImage(),
-      creator: 'Changgggg',
+      creator: 'KienDaoTrung',
     }
   })
 
@@ -109,8 +110,8 @@ const Profile = () => {
               <img className='avatar' src='/avatar.jpg' alt='avatar' />
               <img className='verify-icon' src={VerifyIcon} alt='verify icon' />
             </div>
-            <CustomTooltip placement='topLeft' title='Changgggggggggg'>
-              <div className='author-name'>Changgggggggggg</div>
+            <CustomTooltip placement='topLeft' title='KienDaoTrunggggggg'>
+              <div className='author-name'>KienDaoTrunggggggg</div>
             </CustomTooltip>
             <div className='author-description'>
               {bio?.length != 0 ? (

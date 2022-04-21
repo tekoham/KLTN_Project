@@ -21,13 +21,14 @@ const Marketplace = (props) => {
     return {
       id: index,
       name: stringRandom(true),
-      startDate: Date.now(),
-      expireDate: Math.floor(Math.random() * Date.now()) + 400,
+      startDate: parseInt(Date.now() / 1000),
+      expireDate:
+        Math.floor(Math.random() * 86400) + Number(parseInt(Date.now() / 1000)),
       type: type[Math.floor(Math.random() * type.length)],
       price: Math.random().toFixed(3),
       likes: Math.floor(Math.random() * 100) + 1,
       image: randomImage(),
-      creator: 'Changgggg',
+      creator: 'KienDaoTrung',
     }
   })
 

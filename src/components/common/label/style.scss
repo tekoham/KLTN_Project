@@ -1,0 +1,42 @@
+@import '../../../styles/variables';
+
+.label-custom_wrapper {
+  position: relative;
+
+  .label-custom_subdesc {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: $subTextColorFontWhite;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .label-custom_desc {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: $subTextColorFontWhite;
+    margin-top: 7px;
+    display: block;
+  }
+
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+}
+
+.label-custom_title_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.label-custom_title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: $primary_color;
+  display: block;
+}

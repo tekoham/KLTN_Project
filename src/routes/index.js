@@ -27,6 +27,7 @@ import {
   TermOfUse,
   PrivacyPolicy,
   EditProfile,
+  CreateNFT,
   NotFound,
 } from '../pages'
 
@@ -72,6 +73,7 @@ const Routes = (props) => {
         <PublicRoute path='/term-of-use' component={TermOfUse} />
         <PublicRoute path='/privacy-policy' component={PrivacyPolicy} />
         <PrivateRoute path='/edit-profile' component={EditProfile} />
+        <PrivateRoute path='/create' component={CreateNFT} />
         <PublicRoute component={NotFound} />
       </Switch>
     </div>

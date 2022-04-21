@@ -90,8 +90,8 @@ const NFTDetail = (props) => {
     name: stringRandom(true),
     description:
       'My crush is beautiful. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    startDate: Date.now(),
-    expireDate: Math.floor(Math.random() * Date.now()) + 400,
+    startDate: parseInt(Date.now() / 1000),
+    expireDate: Math.floor(Math.random() * 86400) + parseInt(Date.now() / 1000),
     type: type[Math.floor(Math.random() * type.length)],
     category: category[Math.floor(Math.random() * category.length)],
     saleStatus: status[Math.floor(Math.random() * status.length)],
@@ -101,12 +101,12 @@ const NFTDetail = (props) => {
     likes: Math.floor(Math.random() * 100) + 1,
     image: randomImage(),
     creator: {
-      name: 'Changgggg',
+      name: 'KienDaoTrung',
       avatar: randomImage(),
       verified: verified[Math.floor(Math.random() * verified.length)],
     },
     owner: {
-      name: 'ChangggggDo',
+      name: 'KienDaoTrungDo',
       avatar: randomImage(),
       verified: verified[Math.floor(Math.random() * verified.length)],
     },

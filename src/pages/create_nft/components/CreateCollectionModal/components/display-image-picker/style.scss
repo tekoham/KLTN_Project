@@ -1,0 +1,50 @@
+@import '../../../../../../styles/variables.scss';
+@import '../../../../../../styles/mixins.scss';
+
+.select-avatar {
+  height: 160px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+
+  .select-avatar_title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .content {
+    margin-left: 32px;
+    max-width: 328px;
+    border-top: none;
+    padding: 0 !important;
+    .recommend {
+      color: $subTextColorFontWhite;
+      margin-bottom: 24px;
+      display: block;
+    }
+  }
+  //temp
+  @include up-to-size('md') {
+    height: auto;
+    justify-content: space-between;
+    align-items: flex-start;
+    .select-avatar_title {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 16px;
+      flex: 1;
+      border-top: none;
+      padding: 0 !important;
+      .recommend {
+        text-align: start;
+        font-size: 12px !important;
+      }
+    }
+  }
+}

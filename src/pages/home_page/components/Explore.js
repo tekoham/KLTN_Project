@@ -13,13 +13,14 @@ const Explore = (props) => {
   const dummyData = new Array(12).fill(undefined).map((ele, index) => {
     return {
       name: stringRandom(true),
-      startDate: Date.now(),
-      expireDate: Math.floor(Math.random() * Date.now()) + 400,
+      startDate: parseInt(Date.now() / 1000),
+      expireDate:
+        Math.floor(Math.random() * 86400) + parseInt(Date.now() / 1000),
       type: type[Math.floor(Math.random() * type.length)],
       price: Math.random().toFixed(3),
       likes: Math.floor(Math.random() * 100) + 1,
       image: randomImage(),
-      creator: 'Changgggg',
+      creator: 'KienDaoTrung',
     }
   })
   return (

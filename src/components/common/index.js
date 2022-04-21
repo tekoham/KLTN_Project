@@ -6,6 +6,11 @@ import CustomTooltip from './tooltip'
 import CustomCarousel from './carousel'
 import ListCustom from './list-custom'
 import InputCustom from './input'
+import CustomInputTextarea from './input-textarea'
+import CustomSwitch from './switch'
+import CustomDragger from './dragger'
+import Label from './label'
+import SelectCustom from './select'
 
 export {
   CustomButton,
@@ -16,4 +21,9 @@ export {
   CustomCarousel,
   ListCustom,
   InputCustom,
+  CustomInputTextarea,
+  CustomSwitch,
+  CustomDragger,
+  Label,
+  SelectCustom,
 }
