@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Menu = () => {
+const HeaderMenu = () => {
   const MainNavLink = [
     {
       to: `/home`,
@@ -37,4 +37,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default HeaderMenu

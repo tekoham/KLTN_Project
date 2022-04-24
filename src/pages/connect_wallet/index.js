@@ -21,7 +21,9 @@ const ConnectWallet = (props) => {
 
   const dispatch = useDispatch()
 
-  // const { openModalRejectConnect } = useSelector((state) => state.modal)
+  const { myProfile, currentUserProfile } = useSelector((state) => state.user)
+  const { isLoadingConnectWallet } = useSelector((state) => state.login)
+  const { openModalRejectConnect } = useSelector((state) => state.modal)
 
   useEffect(() => {
     if (!!account && !!library) {
@@ -29,35 +31,37 @@ const ConnectWallet = (props) => {
     }
   }, [account, library])
 
+  console.log(myProfile)
+
   useEffect(() => {
     const { location, history } = props
-    // if (data?.account) {
-    //   if (location?.state?.from.includes('user')) {
-    //     history.push(
-    //       currentUserProfile?.address
-    //         ? `/user/${currentUserProfile?.address}`
-    //         : `/`
-    //     )
-    //   } else if (location?.state?.from.includes('owner')) {
-    //     history.push(`/user/${data?.account}`)
-    //   } else if (location?.state?.from.includes('edit')) {
-    //     history.push('/edit-profile')
-    //   } else if (location?.state?.from.includes('collectible')) {
-    //     history.push(
-    //       collectible?.id ? `/collectible/${collectible?.id}` : `/`
-    //     )
-    //   } else if (location?.state?.from.includes('collection')) {
-    //     history.push(`/collection/${collection?.shortUrl}`)
-    //   } else if (location?.state?.from.includes('activity')) {
-    //     history.push(`/activity`)
-    //   }
-    //  else {
-    //     history.push('/')
-    //   }
-    // }
+    if (myProfile?.data?.address) {
+      if (location?.state?.from.includes('user')) {
+        history.push(
+          currentUserProfile?.address
+            ? `/user/${currentUserProfile?.address}`
+            : `/`
+        )
+      } else if (location?.state?.from.includes('owner')) {
+        history.push(`/user/${myProfile?.address}`)
+      } else if (location?.state?.from.includes('edit')) {
+        history.push('/edit-profile')
+        // } else if (location?.state?.from.includes('collectible')) {
+        //   history.push(
+        //     collectible?.id ? `/collectible/${collectible?.id}` : `/`
+        //   )
+        // } else if (location?.state?.from.includes('collection')) {
+        //   history.push(`/collection/${collection?.address}`)
+      } else if (location?.state?.from.includes('activity')) {
+        history.push(`/activity`)
+      } else {
+        history.push('/')
+      }
+    }
   }, [props, dispatch])
+
   const handleMetamask = async () => {
-    // dispatch({ type: loginApiActions.OPEN_LOADING_CONNECT })
+    dispatch({ type: loginApiActions.OPEN_LOADING_CONNECT })
     if (window?.ethereum?.isMetaMask) {
       // wc -> metamask -> close wc -> login by metamask
       if ('walletconnect' in localStorage) {
@@ -66,7 +70,7 @@ const ConnectWallet = (props) => {
         await _provider.disconnect()
       }
       if (!!account && !!library) {
-        // dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
+        dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
         dispatch(loginWallet(account.toLowerCase(), library, chainId))
       } else {
         await activate(injected)
@@ -75,7 +79,7 @@ const ConnectWallet = (props) => {
       window.open(metamask_deeplink)
       return
     } else {
-      // dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
+      dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
       window.open('https://metamask.io/download.html')
     }
   }
@@ -137,6 +141,15 @@ const ConnectWallet = (props) => {
           browser, an extension added to your browser, a piece of hardware
           plugged into your computer, or even an app on your phone.
         </p>
+      </Modal>
+      <Modal
+        closable={false}
+        className='custom-loading-modal'
+        centered
+        footer={null}
+        visible={isLoadingConnectWallet}
+      >
+        <ReactLoading type='spinningBubbles' color='#002979' />
       </Modal>
     </div>
   )

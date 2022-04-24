@@ -1,8 +1,7 @@
 import { userActions } from '../constants/user'
 
 const initialState = {
-  data: {},
-  profile: {},
+  myProfile: {},
   currentUserProfile: {
     address: '',
     customUrl: '',
@@ -23,8 +22,6 @@ const userReducer = (state = initialState, action) => {
     case userActions.USER_LOGIN_WALLET_SUCCESS: {
       return {
         ...state,
-        data: action.payload,
-        // profile: {},
         loading: false,
       }
     }
@@ -40,6 +37,21 @@ const userReducer = (state = initialState, action) => {
     case userActions.USER_LOGOUT_WALLET: {
       return {
         ...initialState,
+      }
+    }
+
+    case userActions.USER_GET_PROFILE_LOADING: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+
+    case userActions.USER_GET_PROFILE_SUCCESS: {
+      return {
+        ...state,
+        myProfile: action.payload,
+        loading: false,
       }
     }
 
