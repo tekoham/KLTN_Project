@@ -70,9 +70,49 @@
       border-radius: 12px !important;
     }
   }
+  .address-btn {
+    span {
+      width: 100%;
+    }
+    &:hover {
+      background: $primary_color !important;
+    }
+  }
   .connect-btn {
     &:hover {
       background: $primary_color !important;
+    }
+  }
+}
+
+.dropdown-account {
+  .dropdown-menu {
+    border-radius: 10px;
+    border: 1px solid $lightGrayColor;
+    .ant-menu {
+      border-radius: 10px;
+      .ant-menu-item {
+        margin: 0 !important;
+        padding: 0 24px !important;
+        min-height: 45px;
+      }
+    }
+    &:hover {
+      border: none;
+    }
+  }
+  .item-redirect {
+    border-radius: 10px;
+    &:hover {
+      background-color: $primary_color;
+      div {
+        color: $whiteColor;
+      }
+    }
+    div {
+      color: $primary_color;
+      font-size: 16px;
+      font-weight: 700;
     }
   }
 }

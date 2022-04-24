@@ -1,11 +1,32 @@
-import React from 'react'
-import { Menu, SearchHeaderBar } from './components'
+import React, { useState } from 'react'
+import { HeaderMenu, SearchHeaderBar, DropdownMenu } from './components'
+import { CustomTooltip, CustomButton } from '../../../common'
+import { Dropdown } from 'antd'
 import { Link } from 'react-router-dom'
-import CustomButton from '../../../common/button'
+import { useSelector } from 'react-redux'
 import './styles.scss'
 import SearchIcon from '../../../../assest/icon/search-icon.svg'
 
 const Header = () => {
+  const { myProfile } = useSelector((state) => state.user)
+  const [visibleMenuUser, setVisibleMenuUser] = useState(false)
+
+  const shortenAddress = (address = '', start = 6, chars = 4) => {
+    return `${address.substring(0, start)}...${address.substring(
+      address.length - chars
+    )}`
+  }
+
+  const handleVisibleChange = (flag) => {
+    setVisibleMenuUser(flag)
+  }
+
+  const handleMenuClick = (e) => {
+    if (e.key === '6' || e.key === '7' || e.key === '8' || e.key === '2') {
+      setVisibleMenuUser(false)
+    }
+  }
+
   return (
     <div className='header-container d-flex'>
       <div className='d-flex align-items-center'>
@@ -18,7 +39,7 @@ const Header = () => {
           <img src={SearchIcon} alt='' />
         </div>
       </div>
-      <Menu />
+      <HeaderMenu />
       <div>
         <Link to='/create'>
           <CustomButton
@@ -29,11 +50,39 @@ const Header = () => {
             Create
           </CustomButton>
         </Link>
-        <Link to='/connect'>
-          <CustomButton color='pink' display='inline' className='connect-btn'>
-            Connect Wallet
-          </CustomButton>
-        </Link>
+        {myProfile?.data?.address ? (
+          <Dropdown
+            arrow={false}
+            overlayClassName='dropdown-account'
+            overlay={() => (
+              <DropdownMenu
+                handleMenuClick={handleMenuClick}
+                setVisibleMenuUser={setVisibleMenuUser}
+                visibleMenuUser={visibleMenuUser}
+              />
+            )}
+            placement='bottomRight'
+            trigger={['click']}
+            onVisibleChange={handleVisibleChange}
+            visible={visibleMenuUser}
+          >
+            <CustomTooltip title={myProfile?.data?.address} placement='left'>
+              <CustomButton
+                color='pink'
+                display='inline'
+                className='address-btn'
+              >
+                {shortenAddress(myProfile?.data?.address)}
+              </CustomButton>
+            </CustomTooltip>
+          </Dropdown>
+        ) : (
+          <Link to='/connect'>
+            <CustomButton color='pink' display='inline' className='connect-btn'>
+              Connect Wallet
+            </CustomButton>
+          </Link>
+        )}
       </div>
     </div>
   )

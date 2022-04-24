@@ -1,4 +1,5 @@
-import Menu from './Menu'
+import HeaderMenu from './HeaderMenu'
 import SearchHeaderBar from './SearchHeaderBar'
+import DropdownMenu from './DropdownMenu'
 
-export { Menu, SearchHeaderBar }
+export { HeaderMenu, SearchHeaderBar, DropdownMenu }
