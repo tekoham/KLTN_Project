@@ -100,10 +100,13 @@ const CreateCollectionModal = ({
           await uploadImageService.uploadImageIPFS({
             imgFile: values?.displayImage,
           })
+          
 
         if (errorUpload) {
           message.error(`Failed to upload collection avatar: ${errorUpload}`)
         }
+
+        console.log(imageLink)
 
         const collectionData = {
           address: data?.collectionAddress,
