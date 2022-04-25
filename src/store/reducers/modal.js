@@ -11,13 +11,6 @@ const initialState = {
 
 const modal = (state = initialState, action) => {
   switch (action.type) {
-    case modalAction.TERM_OF_SERVICE_OPEN: {
-      return { open: true }
-    }
-    case modalAction.TERM_OF_SERVICE_CLOSE: {
-      return { open: false }
-    }
-
     case modalAction.WRONG_NETWORK_OPEN: {
       return { ...state, openModalWrongNetwork: true }
     }

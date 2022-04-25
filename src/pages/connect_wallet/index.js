@@ -23,15 +23,13 @@ const ConnectWallet = (props) => {
 
   const { myProfile, currentUserProfile } = useSelector((state) => state.user)
   const { isLoadingConnectWallet } = useSelector((state) => state.login)
-  const { openModalRejectConnect } = useSelector((state) => state.modal)
 
   useEffect(() => {
     if (!!account && !!library) {
+      dispatch({ type: loginApiActions.OPEN_LOADING_CONNECT })
       dispatch(loginWallet(account.toLowerCase(), library, chainId))
     }
   }, [account, library])
-
-  console.log(myProfile)
 
   useEffect(() => {
     const { location, history } = props
@@ -58,10 +56,11 @@ const ConnectWallet = (props) => {
         history.push('/')
       }
     }
-  }, [props, dispatch])
+  }, [props, dispatch, myProfile])
 
   const handleMetamask = async () => {
     dispatch({ type: loginApiActions.OPEN_LOADING_CONNECT })
+
     if (window?.ethereum?.isMetaMask) {
       // wc -> metamask -> close wc -> login by metamask
       if ('walletconnect' in localStorage) {
@@ -70,7 +69,6 @@ const ConnectWallet = (props) => {
         await _provider.disconnect()
       }
       if (!!account && !!library) {
-        dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
         dispatch(loginWallet(account.toLowerCase(), library, chainId))
       } else {
         await activate(injected)

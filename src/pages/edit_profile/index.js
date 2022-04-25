@@ -17,7 +17,6 @@ const FILE_MAX_SIZE = 100000000
 
 const EditProfile = () => {
   const uploadFileBtn = useRef()
-  const { profile } = useSelector((state) => state.user)
   const [avatar, setAvatar] = useState('')
   const [isError, setIsError] = useState(false)
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -28,11 +27,11 @@ const EditProfile = () => {
   const history = useHistory()
   const dispatch = useDispatch()
 
-  const { data, updateProfileSuccess, error, previewAvatar } = useSelector(
+  const { myProfile, updateProfileSuccess, error, previewAvatar } = useSelector(
     (state) => state.user
   )
   const { name, bio, avatarUrl, id } = useSelector(
-    (state) => state.user.profile
+    (state) => state?.user?.myProfile
   )
 
   const [form] = Form.useForm()
@@ -120,16 +119,16 @@ const EditProfile = () => {
     // dispatch(setUpdateProfileState(null))
     setIsOpenModal(false)
     if (updateProfileSuccess === true) {
-      history.push(`/user/${data?.account}`)
+      history.push(`/user/${myProfile?.data?.address}`)
       message.success('profileUpdated')
     } else if (updateProfileSuccess === false) {
       message.error(error ? error.message : 'updateProfileFailed')
     }
-  }, [data.account, dispatch, error, history, updateProfileSuccess])
+  }, [myProfile?.data?.address, dispatch, error, history, updateProfileSuccess])
 
   useEffect(() => {
     form.setFieldsValue(initialFormValues)
-  }, [form, initialFormValues, data?.account])
+  }, [form, initialFormValues, myProfile?.data?.address])
 
   return (
     <DefaultLayout isActiveFooter={!isMobile}>
@@ -205,7 +204,7 @@ const EditProfile = () => {
             </div>
           </div>
           <div className='verification-group'>
-            {!profile?.verification && (
+            {!myProfile?.data?.verification && (
               <>
                 <div className='label'>Verification</div>
                 <div className='sub'>
