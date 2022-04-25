@@ -29,6 +29,7 @@ export const loginApi = (credentials) => {
         type: loginApiActions.LOGIN_FAILURE,
         payload: error.response.status,
       })
+      dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
     }
   }
 }
