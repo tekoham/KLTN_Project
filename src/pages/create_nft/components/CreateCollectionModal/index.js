@@ -4,6 +4,9 @@ import React, { useEffect, useState, useCallback } from 'react'
 //hooks
 import { useSelector, useDispatch } from 'react-redux'
 
+//blockchain
+import { genCollectionFactoryContract } from '../../../../blockchain/instance'
+
 //components
 import { Modal, Form, message } from 'antd'
 import {
@@ -12,6 +15,10 @@ import {
   CustomInputTextarea,
   Label,
 } from '../../../../components/common'
+
+//services
+import collectionService from '../../../../service/collectionService'
+import uploadImageService from '../../../../service/uploadImageService'
 
 import { DisplayImagePicker } from './components'
 
@@ -35,20 +42,32 @@ const CreateCollectionModal = ({
 }) => {
   const [form] = Form.useForm()
 
-  const [isShortUrlErr, setShortUrlErr] = useState(false)
   const [isFormError, setIsFormError] = useState(false)
+  const { myProfile } = useSelector((state) => state.user)
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    // message.success('Collection has been created successfully')
-    dispatch(createSuccess())
-    onCollectionFollowStepModalClose()
-    dispatch(createCollectionSuccess())
-  }, [dispatch, onCollectionFollowStepModalClose])
-
   const handleDeployCollection = async (values) => {
-    console.log('deployCollection: ', values)
+    try {
+      const collectionFactoryContract = await genCollectionFactoryContract()
+      console.log(collectionFactoryContract)
+      const contract = await collectionFactoryContract.createCollection(
+        values?.displayName,
+        values?.collection_symbol
+      )
+
+      dispatch(deployPending())
+
+      const result = await contract.wait(1)
+      const data = {
+        collectionAddress: result?.events[0]?.address,
+        transactionHash: result?.transactionHash,
+      }
+
+      return [data, null]
+    } catch (error) {
+      return [null, error]
+    }
   }
 
   const handleCreateCollection = async () => {
@@ -57,6 +76,7 @@ const CreateCollectionModal = ({
 
       //close create collection modal
       onClose()
+
       // open follow step collection modal
       onCollectionFollowStepModalOpen()
 
@@ -74,59 +94,49 @@ const CreateCollectionModal = ({
       if (data) {
         dispatch(deploySuccess())
         dispatch(createPending())
-        const collectionData = {
-          name: values?.displayName.trim(),
-          description: values?.description,
-          tokenSymbol: values?.collection_symbol,
-          hashTransaction: data.transactionHash,
-          address: data.collectionAddress,
-          type: 0,
+
+        //Upload image to ipfs
+        const [imageLink, errorUpload] =
+          await uploadImageService.uploadImageIPFS({
+            imgFile: values?.displayImage,
+          })
+
+        if (errorUpload) {
+          message.error(`Failed to upload collection avatar: ${errorUpload}`)
         }
 
-        console.log(collectionData)
+        const collectionData = {
+          address: data?.collectionAddress,
+          metadata: {
+            description: values?.description,
+            tokenSymbol: values?.collection_symbol,
+            creator: myProfile?.data?.address,
+            hashTransaction: data?.transactionHash,
+            avatar: imageLink,
+          },
+          name: values?.displayName.trim(),
+        }
 
-        // const [response, err] = await collectionService.postCollection(collectionData)
+        const [response, err] = await collectionService.postCollection(
+          collectionData
+        )
 
-        // if (err) {
-        //     message.error(`Fail to create collection: ${err}`)
-        //     return onCollectionFollowStepModalClose()
-        // }
-
-        // if (response) {
-        //     const collectionId = response.id
-        //     await uploadImageCollection({ collectionId, imgFile: values.displayImage })
-        // }
+        if (err) {
+          message.error(`Fail to create collection: ${err}`)
+          return onCollectionFollowStepModalClose()
+        }
+        if (response) {
+          message.success('Collection has been created successfully')
+          dispatch(createSuccess())
+          onCollectionFollowStepModalClose()
+          dispatch(createCollectionSuccess())
+        }
       }
-
-      // setLoading(false)
     } catch (err) {
       setIsFormError(true)
       return
     }
   }
-
-  //   const uploadImageCollection = async ({ collectionId, imgFile }) => {
-  //     const uploadParams = {
-  //       userId: localStorage.getItem('userId'),
-  //       accessToken: localStorage.getItem('accessToken'),
-  //       collectionId,
-  //       imgFile,
-  //     }
-
-  //     const [response, error] =
-  //       await collectionService.getPresignUrlCollectionAvatar(uploadParams)
-
-  //     const [, errorUpload] = await nftService.putNftImage({
-  //       imgFile: uploadParams.imgFile,
-  //       uploadUrl: response?.upload_url,
-  //     })
-
-  //     if (error || errorUpload) {
-  //       message.error(
-  //         `Failed to upload collection avatar: ${error || errorUpload}`
-  //       )
-  //     }
-  //   }
 
   const handleCloseModal = () => {
     onClose()

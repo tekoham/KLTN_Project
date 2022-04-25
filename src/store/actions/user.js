@@ -23,14 +23,30 @@ export const loginWallet = (account, library, chainId) => {
     try {
       let ethBalance = await library.getBalance(account)
       ethBalance = convertBigNumberValueToNumber(ethBalance, 18)
+      const currentTime = parseInt(Date.now() / 1000)
 
-      const signature = await signWallet(library)
-      const _signature = signature.substring(2)
-      const credentials = {
-        signature: _signature,
+      const accessToken = localStorage.getItem('accessToken')
+      const expireDate = localStorage.getItem('expireDate')
+
+      if (!accessToken) {
+        const signature = await signWallet(library)
+        const _signature = signature.substring(2)
+        const credentials = {
+          signature: _signature,
+        }
+
+        await dispatch(loginApi(credentials))
+      } else {
+        if (currentTime > expireDate) {
+          const signature = await signWallet(library)
+          const _signature = signature.substring(2)
+          const credentials = {
+            signature: _signature,
+          }
+
+          await dispatch(loginApi(credentials))
+        }
       }
-
-      await dispatch(loginApi(credentials))
 
       const userId = localStorage.getItem('userId')
 

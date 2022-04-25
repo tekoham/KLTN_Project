@@ -2,10 +2,7 @@ import { userActions } from '../constants/user'
 
 const initialState = {
   myProfile: {},
-  currentUserProfile: {
-    address: '',
-    customUrl: '',
-  },
+  currentUserProfileAddress: '',
   loading: false,
   error: '',
 }

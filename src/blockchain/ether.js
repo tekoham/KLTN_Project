@@ -1,4 +1,5 @@
 import { ethers, providers, utils } from 'ethers'
+import { injected, walletconnect } from './connectors'
 
 export const getProvider = async () => {
   // TODO: find a better to detect what user connect by
@@ -16,7 +17,6 @@ export const getContractInstanceEther = async (
 ) => {
   const provider = await getProvider()
   const signer = provider.getSigner()
-
   return new ethers.Contract(contractAddress, ABIContract, signer)
 }
 

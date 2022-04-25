@@ -1,0 +1,152 @@
+[
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "EMPTY_ADDRESS",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_contract_sale",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "_token_id", "type": "uint256" }
+    ],
+    "name": "auctionInfo",
+    "outputs": [
+      { "internalType": "uint256", "name": "start_price", "type": "uint256" },
+      {
+        "internalType": "address",
+        "name": "highest_bidder",
+        "type": "address"
+      },
+      { "internalType": "address", "name": "coin_buy", "type": "address" },
+      { "internalType": "address", "name": "creator", "type": "address" },
+      { "internalType": "bool", "name": "ended", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_contract_sale",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "_token_id", "type": "uint256" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "bid",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_contract_sale",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "_token_id", "type": "uint256" },
+      { "internalType": "address", "name": "_bidder", "type": "address" }
+    ],
+    "name": "biddedBalance",
+    "outputs": [
+      { "internalType": "uint256", "name": "bidded", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_contract_sale",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "_token_id", "type": "uint256" }
+    ],
+    "name": "finish",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_contract_sale",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "_token_id", "type": "uint256" },
+      { "internalType": "address", "name": "_coin_buy", "type": "address" },
+      { "internalType": "uint256", "name": "_start_price", "type": "uint256" }
+    ],
+    "name": "start",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_contract_sale",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "_token_id", "type": "uint256" }
+    ],
+    "name": "withdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
