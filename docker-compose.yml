@@ -1,13 +1,11 @@
 version: "3"
 services:
-  server:
+  ui:
       build:
         context: .
         dockerfile: ./Dockerfile
       volumes:
         - .:/app
-      depends_on:
-        - postgis
       ports:
         - 3000:80
       network_mode: "host"
