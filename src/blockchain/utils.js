@@ -1,14 +1,6 @@
 import { ethers } from 'ethers'
 import { BigNumber } from 'bignumber.js'
 
-// import {
-//     genMainContractEther,
-//     genPaceArtTokenContract,
-//     genPaceTokenContract,
-//     genRegistryContractEther,
-//     genUsdtPaymentContract,
-//     genWETHPaymentContract
-// } from './instance'
 import { getSigner, convertPriceToBigDecimals } from './ether'
 
 // import PaceArtStoreJSON from './abi/PaceArtStore.json'
@@ -26,17 +18,17 @@ const LOGIN_SIGN_MESSAGE = `{
  * @returns {Promise<string>}
  */
 export const signMessage = async (msg, library) => {
-  if (!library || !msg) throw new Error('invalid params')
+    if (!library || !msg) throw new Error('invalid params')
 
-  const signer = library.getSigner()
-  const address = await signer.getAddress()
-  // metamask will return obj `signature.result`, walletconnect will return signature as string
-  const signature = await library.provider.send('personal_sign', [
-    ethers.utils.hexlify(ethers.utils.toUtf8Bytes(msg)),
-    address.toLowerCase(),
-  ])
-  return signature?.result || signature
+    const signer = library.getSigner()
+    const address = await signer.getAddress()
+    // metamask will return obj `signature.result`, walletconnect will return signature as string
+    const signature = await library.provider.send('personal_sign', [
+        ethers.utils.hexlify(ethers.utils.toUtf8Bytes(msg)),
+        address.toLowerCase()
+    ])
+    return signature?.result || signature
 }
-export const signWallet = (library) => {
-  return signMessage(LOGIN_SIGN_MESSAGE, library)
+export const signWallet = library => {
+    return signMessage(LOGIN_SIGN_MESSAGE, library)
 }
