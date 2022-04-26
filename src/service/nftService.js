@@ -2,35 +2,25 @@ import Request from '../request'
 
 import { customAxios } from '../request/customAxios'
 
-const tatumEndpoint = process.env.REACT_APP_TATUM_API_ENDPOINT
-const tatumAPIKey = process.env.REACT_APP_TATUM_API_KEY
+const serverEndpoint = process.env.REACT_APP_SERVER_API_ENDPOINT
 
 const nftService = {
-  uploadAvatar: async ({ imgFile }) => {
-    // const accessToken = localStorage.getItem('accessToken')
-    console.log(`${tatumAPIKey}`)
-    console.log(imgFile)
-    const formData = new FormData()
-    formData.append('file', imgFile)
-    const config = {
-      headers: {
-        // Authorization: `${accessToken}`,
-        'x-api-key': `${tatumAPIKey}`,
-        'content-type': 'multipart/form-data',
-      },
+    createNft: async data => {
+        try {
+            const accessToken = localStorage.getItem('accessToken')
+            const res = await customAxios({
+                method: 'post',
+                url: `${serverEndpoint}/v1/items`,
+                data: data,
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
+            return [res.data, null]
+        } catch (error) {
+            return [null, error]
+        }
     }
-    try {
-      const response = await customAxios({
-        method: 'post',
-        url: `${tatumEndpoint}`,
-        headers: config.headers,
-        data: formData,
-      })
-      return [response, null]
-    } catch (error) {
-      return [null, error]
-    }
-  },
 }
 
 export default nftService

@@ -35,6 +35,8 @@ const RejectSignModal = (props) => {
     if (isClickBtnCreate) {
       dispatch({ type: loginApiActions.CLICK_BTN_CREATE })
     }
+
+    dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
   }
   const handleTryAgain = () => {
     if (openModalRejectSign) {
@@ -48,8 +50,7 @@ const RejectSignModal = (props) => {
     try {
       const signature = await signWallet(library)
       const credentials = {
-        walletAddress: account,
-        signature,
+        signature: signature.substring(2),
       }
       dispatch(closeRejectSignModal())
 
@@ -69,6 +70,7 @@ const RejectSignModal = (props) => {
       centered
       footer={null}
       visible={openModalRejectSign || openModalRejectConnect}
+      onCancel={onCancel}
     >
       <div className='modal-wrapper'>
         <div>
@@ -77,7 +79,7 @@ const RejectSignModal = (props) => {
         <span className='title'>Error</span>
         <span className='description'>
           User rejected the request. If the problem persist please{' '}
-          <a href='/how-it-works'>Contact Support</a>
+          <a href='/information'>Contact Support</a>
         </span>
 
         <div className='btn-sign-wallet'>

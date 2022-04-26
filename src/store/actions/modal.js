@@ -1,17 +1,5 @@
 import { modalAction } from '../constants/modal'
 
-export const closeTermOfService = () => {
-  return (dispatch) => {
-    dispatch({ type: modalAction.TERM_OF_SERVICE_CLOSE })
-  }
-}
-
-export const openTermOfService = () => {
-  return (dispatch) => {
-    dispatch({ type: modalAction.TERM_OF_SERVICE_OPEN })
-  }
-}
-
 export const closeWrongNetworkModal = () => {
   return (dispatch) => {
     dispatch({ type: modalAction.WRONG_NETWORK_CLOSE })

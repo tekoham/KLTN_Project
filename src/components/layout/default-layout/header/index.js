@@ -21,11 +21,7 @@ const Header = () => {
     setVisibleMenuUser(flag)
   }
 
-  const handleMenuClick = (e) => {
-    if (e.key === '6' || e.key === '7' || e.key === '8' || e.key === '2') {
-      setVisibleMenuUser(false)
-    }
-  }
+  const handleMenuClick = () => {}
 
   return (
     <div className='header-container d-flex'>

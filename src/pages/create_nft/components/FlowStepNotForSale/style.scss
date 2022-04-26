@@ -1,0 +1,75 @@
+@import '../../../../styles/variables.scss';
+
+.flow-step-not-for-sale {
+    .ant-modal-content {
+        border-radius: 16px !important;
+        max-width: 100%;
+    }
+    .not-for-sale_header {
+        .not-for-sale_title {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            color: $primary_color;
+        }
+    }
+    .create-nft-steps {
+        margin-top: 16px;
+
+        .create-nft-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 24px;
+
+            .create-nft-step_loading {
+                margin-top: 4px;
+                margin-right: 24px;
+                border: 3px solid rgba(0, 41, 121, 0.5);
+                border-top: 3px solid $primary_color;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                animation: spin 1s linear infinite;
+            }
+
+            .create-nft-step_icon {
+                margin-right: 24px;
+            }
+
+            .create-nft-step_content {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+
+                .create-nft-step_content__title {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    color: $primary_color;
+                    margin-bottom: 4px;
+                }
+
+                .create-nft-step_content__desc {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    margin-bottom: 16px;
+                    color: $third_color;
+                }
+
+                .create-nft-step_content__btn {
+                    height: 40px !important;
+                }
+            }
+        }
+    }
+    .warning {
+        margin-top: 24px;
+        border-top: 1px solid $lightGrayColor;
+        padding-top: 32px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        color: $primary_color;
+    }
+}

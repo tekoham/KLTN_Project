@@ -18,51 +18,67 @@ import { signWallet } from '../../blockchain/utils'
 const ETHER_NETWORK_ID = Number(process.env.REACT_APP_NETWORK_ID)
 
 export const loginWallet = (account, library, chainId) => {
-  return async (dispatch) => {
-    dispatch({ type: userActions.USER_LOGIN_WALLET_LOADING })
-    try {
-      let ethBalance = await library.getBalance(account)
-      ethBalance = convertBigNumberValueToNumber(ethBalance, 18)
+    return async dispatch => {
+        dispatch({ type: userActions.USER_LOGIN_WALLET_LOADING })
+        try {
+            let ethBalance = await library.getBalance(account)
+            ethBalance = convertBigNumberValueToNumber(ethBalance, 18)
+            const currentTime = parseInt(Date.now() / 1000)
 
-      const signature = await signWallet(library)
-      const _signature = signature.substring(2)
-      const credentials = {
-        signature: _signature,
-      }
+            const accessToken = localStorage.getItem('accessToken')
+            const expireDate = localStorage.getItem('expireDate')
 
-      await dispatch(loginApi(credentials))
+            if (!accessToken) {
+                const signature = await signWallet(library)
+                const _signature = signature.substring(2)
+                const credentials = {
+                    signature: _signature
+                }
 
-      const userId = localStorage.getItem('userId')
+                await dispatch(loginApi(credentials))
+            } else {
+                if (currentTime > expireDate) {
+                    const signature = await signWallet(library)
+                    const _signature = signature.substring(2)
+                    const credentials = {
+                        signature: _signature
+                    }
 
-      const [profile] = await userService.getUserInfo({
-        userId: userId,
-      })
+                    await dispatch(loginApi(credentials))
+                }
+            }
 
-      if (profile) {
-        dispatch({
-          type: userActions.USER_LOGIN_WALLET_SUCCESS,
-          payload: {},
-        })
-        dispatch({
-          type: userActions.USER_GET_PROFILE_SUCCESS,
-          payload: {
-            data: profile,
-            ethBalance: ethBalance.toString(),
-          },
-        })
-        dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
+            const userId = localStorage.getItem('userId')
 
-        return
-      }
-    } catch (err) {
-      if (err.code === 4001) {
-        dispatch(openRejectConnectModal())
-      } else {
-        dispatch({
-          type: userActions.USER_LOGIN_WALLET_FAILURE,
-          payload: err,
-        })
-      }
+            const [profile] = await userService.getUserInfo({
+                userId: userId
+            })
+
+            if (profile) {
+                dispatch({
+                    type: userActions.USER_LOGIN_WALLET_SUCCESS,
+                    payload: {}
+                })
+                dispatch({
+                    type: userActions.USER_GET_PROFILE_SUCCESS,
+                    payload: {
+                        data: profile,
+                        ethBalance: ethBalance.toString()
+                    }
+                })
+                dispatch({ type: loginApiActions.CLOSE_LOADING_CONNECT })
+
+                return
+            }
+        } catch (err) {
+            if (err.code === 4001) {
+                dispatch(openRejectConnectModal())
+            } else {
+                dispatch({
+                    type: userActions.USER_LOGIN_WALLET_FAILURE,
+                    payload: err
+                })
+            }
+        }
     }
-  }
 }

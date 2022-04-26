@@ -1,14 +1,12 @@
 import Request from '../request'
 
 import { customAxios } from '../request/customAxios'
-// import { getNFTImageName } from 'utils/image'
 
 const serverEndpoint = process.env.REACT_APP_SERVER_API_ENDPOINT
 
 const userService = {
   login: async (credentials) => {
     try {
-      console.log(credentials)
       const response = await Request.post(
         `${serverEndpoint}/v1/users/login`,
         credentials
