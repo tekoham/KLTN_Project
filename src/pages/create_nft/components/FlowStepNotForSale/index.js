@@ -81,7 +81,10 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
                 collection_id: String(newData?.collectionId),
                 description: newData?.description,
                 item_id: nftIdCreated.toString(),
-                metadata: {},
+                metadata: {
+                    imageURL: imageLink,
+                    onSaleStatus: 0
+                },
                 name: newData?.name,
                 owner: resData?.owner
             }
