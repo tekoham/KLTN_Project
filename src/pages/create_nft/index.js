@@ -142,7 +142,8 @@ const CreateNFT = () => {
         const fetchListCollections = async () => {
             dispatch(globalLoading())
             const userId = localStorage.getItem('userId')
-            const [dataCollection, err] = await collectionService.getListOfCollection('', userId)
+
+            const [dataCollection, err] = await collectionService.getListOfCollection({ userId })
             if (err) {
                 message.error('Failed to fetch collections')
             } else if (dataCollection) {

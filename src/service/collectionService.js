@@ -22,10 +22,10 @@ const collectionService = {
         }
     },
 
-    getListOfCollection: async ({ name = '', user_id, page = 1, page_size = 999 }) => {
+    getListOfCollection: async ({ name = '', userId, page = 1, page_size = 999 }) => {
         try {
             const response = await Request.get(
-                `${serverEndpoint}/v1/collections/query/list?name=${name}&creator_id=${user_id}&page=${page}&page_size=${page_size}`
+                `${serverEndpoint}/v1/collections/query/list?name=${name}&creator_id=${userId}&page=${page}&page_size=${page_size}`
             )
             return [response.data, null]
         } catch (error) {
