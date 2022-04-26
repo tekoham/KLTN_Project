@@ -20,6 +20,15 @@ const nftService = {
         } catch (error) {
             return [null, error]
         }
+    },
+
+    getNftDetail: async (itemId) => {
+        try {
+            const response = await Request.get(`${serverEndpoint}/v1/items/${itemId}`)
+            return [response.data, null]
+        } catch (error) {
+            return [null, error]
+        }
     }
 }
 

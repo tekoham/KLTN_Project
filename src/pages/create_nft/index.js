@@ -584,7 +584,7 @@ const CreateNFT = () => {
                             htmlType="submit"
                             disabled={isError}
                         >
-                            Update Profile
+                            Create Collectible
                         </CustomButton>
                         {isError && <div className="err-underline">Please fix all error before create collectible</div>}
                     </Form>

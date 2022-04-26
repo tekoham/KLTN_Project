@@ -25,8 +25,11 @@ import {
     createCollectionSuccess
 } from '../../../../store/actions/collection'
 
+import { isTokenExpired } from '../../../../utils/refreshTokenAuth'
+
 //css
 import './style.scss'
+import userService from '../../../../service/userService'
 
 const CreateCollectionModal = ({
     visible,
@@ -75,6 +78,10 @@ const CreateCollectionModal = ({
             // open follow step collection modal
             onCollectionFollowStepModalOpen()
 
+            if(isTokenExpired) {
+              const refreshToken = localStorage.getItem("refreshToken")
+              await userService.refreshToken({refreshToken: refreshToken})
+            }
             // deploy collection to blockchain
             const [data, error] = await handleDeployCollection(values)
 

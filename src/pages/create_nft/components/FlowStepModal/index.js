@@ -88,6 +88,7 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
             // save collection to database
             if (resData) {
                 nftIdCreated = resData?.tokenId
+                const ownerId = localStorage.getItem("userId")
 
                 const collectibleData = {
                     category: String(newData?.category),
@@ -100,7 +101,7 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
                         onSaleStatus: 1
                     },
                     name: newData?.name,
-                    owner: resData?.owner
+                    owner_id: ownerId
                 }
 
                 setIsCreatingNFT(true)
@@ -111,7 +112,7 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
                     onClose()
                     return message.error('Creating collectible failed', errCreateNFT)
                 } else {
-                    setNftId(nftIdCreated)
+                    setNftId(createNFTData?.id)
                     message.success('Collectible has been created successfully')
                     onClose()
                 }

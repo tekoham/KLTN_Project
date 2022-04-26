@@ -95,7 +95,7 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
                 onClose()
                 return message.error('Creating collectible failed', errCreateNFT)
             } else {
-                setNftId(nftIdCreated)
+                setNftId(createNFTData?.id)
                 message.success('Collectible has been created successfully')
                 onClose()
             }
