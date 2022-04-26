@@ -21,9 +21,9 @@ import {
     CreateCollectionModal,
     CollectionFollowStepModal,
     CreateCollectionSelected,
-    FlowStepNotForSale
+    FlowStepNotForSale,
     // FlowAuctionStepModal,
-    // FlowStepModal
+    FlowStepModal
 } from './components'
 import moment from 'moment'
 import { addCustomDay } from '../../utils/convertDate'
@@ -50,19 +50,6 @@ const EXPIREDATE_OPTIONS = [
     { value: 5, label: '5 days' },
     { value: 7, label: '7 days' },
     { value: 0, label: 'Pick specific date' }
-]
-
-const listDummy = [
-    {
-        id: 1,
-        name: stringRandom(),
-        imageUrl: randomImage()
-    },
-    {
-        id: 2,
-        name: stringRandom(),
-        imageUrl: randomImage()
-    }
 ]
 
 const CreateNFT = () => {
@@ -603,22 +590,20 @@ const CreateNFT = () => {
                 </div>
             </div>
 
-            {/* {isModalVisible && formValues && (
+            {isModalVisible && formValues && (
                 <FlowStepModal
                     visible={isModalVisible}
                     onClose={onModalClose}
                     data={formValues}
-                    listOfCollections={listOfCollections}
                     uploadFile={uploadFile}
                     setNftId={handleSetNftId}
                 />
             )}
-            {isModalAuction && formValues && (
+            {/* {isModalAuction && formValues && (
                 <FlowAuctionStepModal
                     visible={isModalAuction}
                     onClose={() => setModalAuction(false)}
                     data={formValues}
-                    listOfCollections={listOfCollections}
                     uploadFile={uploadFile}
                     setNftId={handleSetNftId}
                 />

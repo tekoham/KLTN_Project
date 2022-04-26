@@ -45,6 +45,9 @@ const AppContainer = props => {
                 if (!res) {
                     localStorage.removeItem('accessToken')
                     localStorage.removeItem('userId')
+                    localStorage.removeItem('userAddress')
+                    localStorage.removeItem('refreshToken')
+                    localStorage.removeItem('expireDate')
                     dispatch({
                         type: userActions.USER_LOGOUT_WALLET
                     })
@@ -57,6 +60,12 @@ const AppContainer = props => {
         const onChangeAccount = ([account]) => {
             localStorage.removeItem('accessToken')
             localStorage.removeItem('userId')
+            localStorage.removeItem('userAddress')
+            localStorage.removeItem('refreshToken')
+            localStorage.removeItem('expireDate')
+            dispatch({
+                type: userActions.USER_LOGOUT_WALLET
+            })
             dispatch(loginWallet(account.toLowerCase(), library, chainId))
         }
         const onChangeNetwork = chainId => {
