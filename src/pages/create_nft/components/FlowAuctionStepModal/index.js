@@ -1,42 +1,47 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+
 import { useSelector } from 'react-redux'
-import { message, Modal } from 'antd'
+
+//components
+import { Modal, message } from 'antd'
+
+//services
 import nftService from '../../../../service/nftService'
 import uploadImageService from '../../../../service/uploadImageService'
 import { genCollectionContract } from '../../../../blockchain/instance'
-import { convertBigNumberValueToNumber } from '../../../../blockchain/ether'
+import { convertBigNumberValueToNumber, convertPriceToBigDecimals } from '../../../../blockchain/ether'
 
 //image
 import CheckedIcon from '../../../../assest/icon/checked-outline-icon.svg'
-
+//css
 import './style.scss'
 
-const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) => {
-    let nftIdCreated = null
-    //store
-    const { myProfile } = useSelector(state => state.user) || {}
-
-    //state
+const FlowAuctionStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restProps }) => {
     const [isUploadingImage, setIsUploadingImage] = useState(true)
     const [isCreatingNFT, setIsCreatingNFT] = useState(false)
     const [isWaitingForSign, setIsWaitingForSign] = useState(false)
 
-    //func
+    //store
+    const { myProfile } = useSelector(state => state.user) || {}
+
+    let nftIdCreated = null
+
     const handleDeployCollectible = async values => {
         try {
             const collectionContract = await genCollectionContract(values?.collectionAddress)
-            const contract = await collectionContract.mint(
+            const minimumBid = convertPriceToBigDecimals(values?.minimumBid, 18)
+
+            const contract = await collectionContract.mintAndListOnAuction(
                 values?.to,
                 values?.name,
                 values?.description,
                 values?.category,
-                values?.tokenURI
+                values?.tokenURI,
+                minimumBid
             )
-
             setIsWaitingForSign(false)
 
             const result = await contract.wait(1)
-
             const resdata = {
                 tokenId: convertBigNumberValueToNumber(result?.logs[0]?.topics[3], 0),
                 owner: values?.to,
@@ -49,77 +54,88 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
         }
     }
 
-    const createNFTNotForSale = async () => {
-        //Upload image to ipfs
-        const [imageLink, errorUpload] = await uploadImageService.uploadImageIPFS({
-            imgFile: uploadFile
-        })
+    const createNFT = useCallback(async () => {
+        if (data) {
+            //Upload image to ipfs
+            const [imageLink, errorUpload] = await uploadImageService.uploadImageIPFS({
+                imgFile: uploadFile
+            })
 
-        if (errorUpload) {
-            message.error(`Failed to upload collectible avatar: ${errorUpload}`)
-            onClose()
-        }
-        setIsWaitingForSign(false)
-        setIsWaitingForSign(true)
-        const addData = {
-            to: myProfile?.data?.address,
-            tokenURI: imageLink
-        }
-
-        const newData = { ...data, ...addData }
-
-        // deploy collection to blockchain
-        const [resData, error] = await handleDeployCollectible(newData)
-
-        if (error) {
-            if (error?.code === 4001) {
-                message.error('You declined the action in your wallet.')
-                return onClose()
-            } else {
-                message.error(`Failed to create collectible: ${error}`)
+            if (errorUpload) {
+                message.error(`Failed to upload collectible avatar: ${errorUpload}`)
                 onClose()
             }
-        }
-
-        // save collection to database
-        if (resData) {
-            nftIdCreated = resData?.tokenId
-            const ownerId = localStorage.getItem('userId')
-
-            const collectibleData = {
-                category: String(newData?.category),
-                collection_id: String(newData?.collectionId),
-                description: newData?.description,
-                item_id: nftIdCreated.toString(),
-                metadata: {
-                    imageURL: imageLink,
-                    onSaleStatus: 0
-                },
-                name: newData?.name,
-                owner_id: ownerId
+            setIsUploadingImage(false)
+            setIsWaitingForSign(true)
+            const addData = {
+                to: myProfile?.data?.address,
+                tokenURI: imageLink
             }
 
-            setIsCreatingNFT(true)
+            const newData = { ...data, ...addData }
 
-            // create nft and get id of nft
-            const [createNFTData, errCreateNFT] = await nftService.createNft(collectibleData)
-            if (errCreateNFT) {
-                onClose()
-                return message.error('Creating collectible failed', errCreateNFT)
-            } else {
-                setNftId(createNFTData?.id)
-                message.success('Collectible has been created successfully')
-                onClose()
+            // deploy collection to blockchain
+            const [resData, error] = await handleDeployCollectible(newData)
+
+            if (error) {
+                if (error?.code === 4001) {
+                    message.error('You declined the action in your wallet.')
+                    return onClose()
+                } else {
+                    message.error(`Failed to create collectible: ${error}`)
+                    onClose()
+                }
+            }
+
+            // save collection to database
+            if (resData) {
+                nftIdCreated = resData?.tokenId
+                const ownerId = localStorage.getItem('userId')
+
+                const collectibleData = {
+                    category: String(newData?.category),
+                    collection_id: String(newData?.collectionId),
+                    description: newData?.description,
+                    item_id: nftIdCreated.toString(),
+                    metadata: {
+                        imageURL: imageLink,
+                        minimumBid: newData?.minimumBid,
+                        onSaleStatus: 2,
+                        startDate: newData?.startDate,
+                        expireDate: newData?.expireDate
+                    },
+                    name: newData?.name,
+                    owner_id: ownerId
+                }
+
+                setIsCreatingNFT(true)
+
+                // create nft and get id of nft
+                const [createNFTData, errCreateNFT] = await nftService.createNft(collectibleData)
+                if (errCreateNFT) {
+                    onClose()
+                    return message.error('Creating collectible failed', errCreateNFT)
+                } else {
+                    setNftId(createNFTData?.id)
+                    message.success('Collectible has been created successfully')
+                    onClose()
+                }
             }
         }
-    }
+    }, [onClose, myProfile?.data?.address, uploadFile])
+
     useEffect(() => {
-        createNFTNotForSale()
+        createNFT()
     }, [])
+
+    if (!myProfile?.data?.address) {
+        return null
+    }
+
     return (
-        <Modal className="flow-step-not-for-sale" footer={null} centered visible={visible}>
-            <div className="not-for-sale_header">
-                <span className="not-for-sale_title">Follow Step</span>
+        <Modal className="auction-nft-flow_custom" footer={null} centered visible={visible} {...restProps}>
+            <div className="create-nft-flow_header">
+                <span className="create-nft-flow_title">Follow Steps</span>
             </div>
             <div className="create-nft-steps">
                 <div className="create-nft-step">
@@ -159,6 +175,7 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
                         </span>
                     </div>
                 </div>
+
                 <div className="create-nft-step">
                     <div className="create-nft-loading">
                         {isCreatingNFT && <div className="create-nft-step_loading" />}
@@ -179,4 +196,4 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
     )
 }
 
-export default FlowStepNotForSale
+export default FlowAuctionStepModal

@@ -1,7 +1,7 @@
-import moment from "moment"
+import moment from 'moment'
 
 export const isTokenExpired = () => {
-    const refreshToken = localStorage.getItem('refreshToken')
+    const expriDate = localStorage.getItem('expireDate')
     const currentTime = moment().unix()
-    return currentTime > refreshToken
+    return currentTime > expriDate
 }

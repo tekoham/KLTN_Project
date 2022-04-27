@@ -21,10 +21,14 @@
             align-items: flex-start;
             margin-bottom: 24px;
 
+            .create-nft-loading {
+                width: 45px;
+            }
+
             .create-nft-step_loading {
                 margin-top: 4px;
                 margin-right: 24px;
-                border: 3px solid rgba(0, 41, 121, 0.5);
+                border: 3px solid $third_color;
                 border-top: 3px solid $primary_color;
                 border-radius: 50%;
                 width: 20px;

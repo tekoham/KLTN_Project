@@ -1,138 +1,141 @@
 @import '../../styles/variables.scss';
 
 .create-nft-container {
-  color: black;
-  background-color: $whiteColor;
-  padding: 60px 72px;
-  width: 846px;
-  margin: 60px auto 100px auto;
-  border-radius: 16px;
-  max-width: 100%;
-  .create-nft-header {
-    margin-bottom: 40px;
-    .create-nft-header_title {
-      display: block;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 36px;
+    color: black;
+    background-color: $whiteColor;
+    padding: 60px 72px;
+    width: 846px;
+    margin: 60px auto 100px auto;
+    border-radius: 16px;
+    max-width: 100%;
+    .create-nft-header {
+        margin-bottom: 40px;
+        .create-nft-header_title {
+            display: block;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+        }
     }
-  }
 
-  .create-nft-form_wrapper {
-    display: flex;
-    justify-content: space-between;
+    .create-nft-form_wrapper {
+        display: flex;
+        justify-content: space-between;
 
-    .create-nft-form {
-      flex: 1;
-      overflow: hidden;
+        .create-nft-form {
+            flex: 1;
+            overflow: hidden;
 
-      .create-nft_text__highlight {
-        color: $primary_color;
-        font-weight: bold;
-      }
-
-      .select-nft-avatar,
-      .categories-container,
-      .title-container,
-      .description-container,
-      .choose-sale-type-container,
-      .choose-collection-container {
-        margin-bottom: 32px;
-      }
-
-      .select-nft-avatar {
-        img {
-          max-height: 546px;
-        }
-      }
-
-      .categories-container {
-        button {
-          margin-right: 18px;
-          width: 100px;
-          font-weight: 600;
-          font-size: 14px;
-        }
-        .ant-btn-color-content-blue {
-          background-color: $lightGrayColor !important;
-        }
-        button:nth-of-type(5) {
-          margin-right: 0;
-        }
-      }
-
-      .choose-sale-type-container {
-        .choose-sale-type {
-          margin-bottom: 32px;
-          .choose-sale-type_header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 24px;
-            .choose-sale-type_label {
-              display: flex;
-              flex-direction: column;
-
-              .choose-sale-type_label__title {
-                font-style: normal;
+            .create-nft_text__highlight {
+                color: $primary_color;
                 font-weight: bold;
-                font-size: 14px;
-                margin-bottom: 4px;
-              }
-
-              .choose-sale-type_label__desc {
-                font-style: normal;
-                font-weight: normal;
-                font-size: 12px;
-                color: $subTextColorFontWhite;
-              }
             }
-          }
-        }
-      }
 
-      .fixed-price-container {
-        .create-nft-price {
-          display: flex;
-          justify-content: space-between;
-
-          .create-nft-price_input {
-            flex: 1;
-            margin-right: 20px;
-            margin-bottom: 0;
-          }
-
-          .create-nft-price_currency {
-            width: 120px;
-            margin-bottom: 0;
-          }
-        }
-      }
-
-      .auction-container {
-        .create-nft-minimumBid {
-          .create-nft-minimumBid_price_input {
-            flex: 1;
-            margin-right: 20px;
-            margin-bottom: 0;
-            .create-nft-minimumBid_price_input_custom {
-              padding-right: 12px !important;
+            .select-nft-avatar,
+            .categories-container,
+            .title-container,
+            .description-container,
+            .choose-sale-type-container,
+            .choose-collection-container {
+                margin-bottom: 32px;
             }
-          }
-        }
-      }
 
-      .auction-date-container {
-        .create-nft-minimumBid_label {
-          width: 100%;
+            .select-nft-avatar {
+                img {
+                    max-height: 546px;
+                }
+            }
+
+            .categories-container {
+                button {
+                    margin-right: 18px;
+                    width: 100px;
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+                .ant-btn-color-content-blue {
+                    background-color: $lightGrayColor !important;
+                }
+                button:nth-of-type(5) {
+                    margin-right: 0;
+                }
+            }
+
+            .choose-sale-type-container {
+                .choose-sale-type {
+                    margin-bottom: 32px;
+                    .choose-sale-type_header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        margin-bottom: 24px;
+                        .choose-sale-type_label {
+                            display: flex;
+                            flex-direction: column;
+
+                            .choose-sale-type_label__title {
+                                font-style: normal;
+                                font-weight: bold;
+                                font-size: 14px;
+                                margin-bottom: 4px;
+                            }
+
+                            .choose-sale-type_label__desc {
+                                font-style: normal;
+                                font-weight: normal;
+                                font-size: 12px;
+                                color: $subTextColorFontWhite;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .fixed-price-container {
+                .create-nft-price {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .create-nft-price_input {
+                        flex: 1;
+                        margin-right: 20px;
+                        margin-bottom: 0;
+                    }
+
+                    .create-nft-price_currency {
+                        width: 120px;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            .auction-container {
+                .create-nft-minimumBid {
+                    .create-nft-minimumBid_price_input {
+                        flex: 1;
+                        margin-right: 20px;
+                        margin-bottom: 0;
+                        .create-nft-minimumBid_price_input_custom {
+                            padding-right: 12px !important;
+                        }
+                    }
+                }
+            }
+
+            .auction-date-container {
+                .create-nft-minimumBid_label {
+                    width: 100%;
+                }
+                .pick-auction-date {
+                    .startDate-label,
+                    .expireDate-label {
+                        margin-top: 24px;
+                    }
+                }
+            }
         }
-        .pick-auction-date {
-          .startDate-label,
-          .expireDate-label {
-            margin-top: 24px;
-          }
+        .err-underline {
+            margin-top: 12px;
         }
-      }
     }
-  }
 }

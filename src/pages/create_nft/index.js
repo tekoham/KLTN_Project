@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { Form } from 'antd'
+import { Form, message } from 'antd'
 import {
     CustomButton,
     InputCustom,
@@ -12,8 +12,8 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import DefaultLayout from '../../components/layout/default-layout'
 import { useHistory } from 'react-router-dom'
-import nftService from '../../service/nftService'
 import collectionService from '../../service/collectionService'
+import userService from '../../service/userService'
 import {
     Categories,
     MarketplaceBtnGroups,
@@ -22,16 +22,15 @@ import {
     CollectionFollowStepModal,
     CreateCollectionSelected,
     FlowStepNotForSale,
-    // FlowAuctionStepModal,
+    FlowAuctionStepModal,
     FlowStepModal
 } from './components'
 import moment from 'moment'
 import { addCustomDay } from '../../utils/convertDate'
 import { globalLoading, globalLoadDone } from '../../store/actions/globalLoading'
 import { isUserAuthenticated } from '../../utils/auth'
+import { isTokenExpired } from '../../utils/refreshTokenAuth'
 import './styles.scss'
-import { stringRandom, randomImage } from '../../utils/randomData'
-import { omit } from 'lodash'
 
 const MAX_VALUE = 100000000000000
 const SALE_TYPE = {
@@ -82,7 +81,12 @@ const CreateNFT = () => {
 
     const handleSetCategory = id => {
         setCategory(id)
-        form.setFieldsValue({ category: id })
+        if (id === -1) {
+            form.setFieldsValue({ category: null })
+        } else {
+            removeError()
+            form.setFieldsValue({ category: id })
+        }
     }
 
     useEffect(() => {
@@ -163,13 +167,6 @@ const CreateNFT = () => {
 
         return Promise.resolve()
     }
-
-    const onCategoryChangeValidator = useCallback(value => {
-        if (value < 0) {
-            return Promise.reject('You must select a category')
-        }
-        return Promise.resolve()
-    }, [])
 
     const onPickStartDate = useCallback(value => {
         if (value !== undefined) {
@@ -300,6 +297,15 @@ const CreateNFT = () => {
 
             setFormValues(convertValues)
 
+            if (isTokenExpired()) {
+                const refreshToken = localStorage.getItem('refreshToken')
+                const [, errRefresh] = await userService.refreshToken(refreshToken)
+                if (errRefresh) {
+                    onClose()
+                    return message.error('Creating collectible failed', errCreateNFT)
+                }
+            }
+
             if (values?.onSaleStatus) {
                 if (values?.type === SALE_TYPE.AUCTION) {
                     setModalAuction(true)
@@ -378,9 +384,8 @@ const CreateNFT = () => {
                                     rules={[
                                         {
                                             required: true,
-                                            message: 'Must select a category'
-                                        },
-                                        { validator: onCategoryChangeValidator }
+                                            message: 'You must select a category'
+                                        }
                                     ]}
                                     name="category"
                                 >
@@ -600,7 +605,7 @@ const CreateNFT = () => {
                     setNftId={handleSetNftId}
                 />
             )}
-            {/* {isModalAuction && formValues && (
+            {isModalAuction && formValues && (
                 <FlowAuctionStepModal
                     visible={isModalAuction}
                     onClose={() => setModalAuction(false)}
@@ -608,13 +613,12 @@ const CreateNFT = () => {
                     uploadFile={uploadFile}
                     setNftId={handleSetNftId}
                 />
-            )} */}
+            )}
             {isModalNotForSale && (
                 <FlowStepNotForSale
                     visible={isModalNotForSale}
                     onClose={onNotForSaleModalClose}
                     data={formValues}
-                    listOfCollections={listOfCollections}
                     uploadFile={uploadFile}
                     setNftId={handleSetNftId}
                 />

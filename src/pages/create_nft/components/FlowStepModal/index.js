@@ -18,8 +18,9 @@ import './style.scss'
 
 const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restProps }) => {
     //state
+    const [isUploadingImage, setIsUploadingImage] = useState(true)
     const [isCreatingNFT, setIsCreatingNFT] = useState(false)
-    const [isWaitingForSign, setIsWaitingForSign] = useState(true)
+    const [isWaitingForSign, setIsWaitingForSign] = useState(false)
 
     //store
     const { myProfile } = useSelector(state => state.user) || {}
@@ -65,6 +66,8 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
                 message.error(`Failed to upload collectible avatar: ${errorUpload}`)
                 onClose()
             }
+            setIsUploadingImage(false)
+            setIsWaitingForSign(true)
             const addData = {
                 to: myProfile?.data?.address,
                 tokenURI: imageLink
@@ -72,7 +75,7 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
 
             const newData = { ...data, ...addData }
 
-            // deploy collection to blockchain
+            // deploy collectible to blockchain
             const [resData, error] = await handleDeployCollectible(newData)
 
             if (error) {
@@ -88,7 +91,7 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
             // save collection to database
             if (resData) {
                 nftIdCreated = resData?.tokenId
-                const ownerId = localStorage.getItem("userId")
+                const ownerId = localStorage.getItem('userId')
 
                 const collectibleData = {
                     category: String(newData?.category),
@@ -136,7 +139,32 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
             <div className="create-nft-steps">
                 <div className="create-nft-step">
                     <div className="create-nft-loading">
-                        {isWaitingForSign && <div className="create-nft-step_loading" />}
+                        {isUploadingImage ? (
+                            <div className="create-nft-step_loading" />
+                        ) : (
+                            <img className="create-nft-step_icon" src={CheckedIcon} alt="checked-outline-icon" />
+                        )}
+                    </div>
+
+                    <div className={`create-nft-step_content`}>
+                        <span className="create-nft-step_content__title">Uploading Avatar</span>
+                        <span className="create-nft-step_content__desc" style={{ marginBottom: '10px' }}>
+                            Please wait while we upload your collectible avatar to IPFS
+                        </span>
+                    </div>
+                </div>
+
+                <div className="create-nft-step">
+                    <div className="create-nft-loading">
+                        {!isUploadingImage ? (
+                            isWaitingForSign ? (
+                                <div className="create-nft-step_loading" />
+                            ) : (
+                                <img className="create-nft-step_icon" src={CheckedIcon} alt="checked-outline-icon" />
+                            )
+                        ) : (
+                            ''
+                        )}
                     </div>
 
                     <div className={`create-nft-step_content`}>
