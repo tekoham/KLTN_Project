@@ -76,3 +76,4 @@ export const loginWallet = (account, library, chainId) => {
         }
     }
 }
+

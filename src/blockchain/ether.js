@@ -2,8 +2,6 @@ import { ethers, providers, utils } from 'ethers'
 import { injected, walletconnect } from './connectors'
 
 export const getProvider = async () => {
-    // TODO: find a better to detect what user connect by
-    // hint: redux
     const isWc = 'walletconnect' in localStorage
 
     const provider = await (isWc ? walletconnect : injected).getProvider()

@@ -22,6 +22,7 @@ const ConnectWallet = props => {
     const dispatch = useDispatch()
 
     const { myProfile, currentUserProfile } = useSelector(state => state.user)
+    const { data } = useSelector(state => state.collectible)
     const { isLoadingConnectWallet } = useSelector(state => state.login)
 
     useEffect(() => {
@@ -41,7 +42,7 @@ const ConnectWallet = props => {
             } else if (location?.state?.from.includes('edit')) {
                 history.push('/edit-profile')
             } else if (location?.state?.from.includes('collectible')) {
-                history.push(collectible?.id ? `/collectible/${collectible?.id}` : `/`)
+                history.push(data?.id ? `/collectible/${data?.id}` : `/`)
             } else if (location?.state?.from.includes('collection')) {
                 history.push(`/collection/${collection?.address}`)
             } else if (location?.state?.from.includes('activity')) {

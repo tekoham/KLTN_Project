@@ -299,10 +299,9 @@ const CreateNFT = () => {
 
             if (isTokenExpired()) {
                 const refreshToken = localStorage.getItem('refreshToken')
-                const [, errRefresh] = await userService.refreshToken(refreshToken)
+                const [, errRefresh] = await userService.refreshToken({ refreshToken: refreshToken })
                 if (errRefresh) {
-                    onClose()
-                    return message.error('Creating collectible failed', errCreateNFT)
+                    return message.error('Creating collectible failed', errRefresh)
                 }
             }
 

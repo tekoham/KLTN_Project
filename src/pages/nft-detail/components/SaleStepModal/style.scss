@@ -1,0 +1,86 @@
+@import '../../../../styles/variables.scss';
+
+.ant-modal.sale-flow_custom {
+    display: flex;
+    justify-content: center;
+    .ant-modal-content {
+        border-radius: 16px !important;
+        max-width: 100%;
+    }
+    .create-nft-flow_header {
+        .create-nft-flow_title {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            color: $primary_color;
+        }
+    }
+
+    .waiting-status {
+        margin-left: 45px;
+    }
+
+    .create-nft-steps {
+        margin-top: 16px;
+
+        .create-nft-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 24px;
+
+            .create-nft-loading {
+                width: 45px;
+            }
+
+            .create-nft-step_loading {
+                margin-top: 4px;
+                margin-right: 24px;
+                border: 3px solid $third_color;
+                border-top: 3px solid $primary_color;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                animation: spin 1s linear infinite;
+            }
+
+            .create-nft-step_icon {
+                margin-right: 24px;
+            }
+
+            .create-nft-step_content {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+
+                .create-nft-step_content__title {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    color: $primary_color;
+                    margin-bottom: 4px;
+                }
+
+                .create-nft-step_content__desc {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    margin-bottom: 16px;
+                    color: $third_color;
+                }
+
+                .create-nft-step_content__btn {
+                    height: 40px !important;
+                }
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -4,7 +4,7 @@ import VerifiedIcon from '../../../assest/icon/verified-icon.svg'
 import AvatarPlaceholder from '../../../assest/image/avatar-placeholder.png'
 
 const Author = props => {
-    const { data, dummyData } = props || {}
+    const { data, dummyData, ownerAddress } = props || {}
     return (
         <div className="collectible-author-info d-flex">
             <div className="collectible-creator d-flex align-items-center">
@@ -23,11 +23,9 @@ const Author = props => {
                 <div className="info">
                     <CustomTooltip
                         placement="topLeft"
-                        title={data?.creator?.name ? data?.creator?.name : dummyData?.creator?.address}
+                        title={data?.creator?.name ? data?.creator?.name : data?.creator?.address}
                     >
-                        <div className="name">
-                            {data?.creator?.name ? data?.creator?.name : dummyData?.creator?.address}
-                        </div>
+                        <div className="name">{data?.creator?.name ? data?.creator?.name : data?.creator?.address}</div>
                     </CustomTooltip>
                     <div className="role">Item Creator</div>
                 </div>
@@ -46,11 +44,8 @@ const Author = props => {
                     )}
                 </div>
                 <div className="info">
-                    <CustomTooltip
-                        placement="topLeft"
-                        title={data?.owner?.name ? data?.owner?.name : dummyData?.owner?.address}
-                    >
-                        <div className="name">{data?.owner?.name ? data?.owner?.name : dummyData?.owner?.address}</div>
+                    <CustomTooltip placement="topLeft" title={data?.owner?.name ? data?.owner?.name : ownerAddress}>
+                        <div className="name">{data?.owner?.name ? data?.owner?.name : ownerAddress}</div>
                     </CustomTooltip>
                     <div className="role">Item Owner</div>
                 </div>
@@ -71,10 +66,10 @@ const Author = props => {
                 <div className="info">
                     <CustomTooltip
                         placement="topLeft"
-                        title={data?.collection?.name ? data?.collection?.name : dummyData?.collection?.address}
+                        title={data?.collection?.name ? data?.collection?.name : data?.collection?.address}
                     >
                         <div className="name">
-                            {data?.collection?.name ? data?.collection?.name : dummyData?.collection?.address}
+                            {data?.collection?.name ? data?.collection?.name : data?.collection?.address}
                         </div>
                     </CustomTooltip>
                     <div className="role">Item Collection</div>

@@ -41,6 +41,7 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
                 price
             )
             setIsWaitingForSign(false)
+            setIsCreatingNFT(true)
 
             const result = await contract.wait(1)
             const resdata = {
@@ -106,8 +107,6 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
                     name: newData?.name,
                     owner_id: ownerId
                 }
-
-                setIsCreatingNFT(true)
 
                 // create nft and get id of nft
                 const [createNFTData, errCreateNFT] = await nftService.createNft(collectibleData)

@@ -23,7 +23,7 @@ export const genCollectionFactoryContract = () => {
     return getContractInstanceEther(CollectionFactoryAbi, COLLECTION_FACTORY_CONTRACT_ADDRESS)
 }
 
-export const genWETHContractE = () => {
+export const genWETHContract = () => {
     return getContractInstanceEther(WETHAbi, WETH_CONTRACT_ADDRESS)
 }
 

@@ -34,6 +34,7 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
             )
 
             setIsWaitingForSign(false)
+            setIsCreatingNFT(true)
 
             const result = await contract.wait(1)
 
@@ -59,7 +60,7 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
             message.error(`Failed to upload collectible avatar: ${errorUpload}`)
             onClose()
         }
-        setIsWaitingForSign(false)
+        setIsUploadingImage(false)
         setIsWaitingForSign(true)
         const addData = {
             to: myProfile?.data?.address,
@@ -98,8 +99,6 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
                 name: newData?.name,
                 owner_id: ownerId
             }
-
-            setIsCreatingNFT(true)
 
             // create nft and get id of nft
             const [createNFTData, errCreateNFT] = await nftService.createNft(collectibleData)

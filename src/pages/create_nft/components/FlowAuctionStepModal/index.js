@@ -40,6 +40,7 @@ const FlowAuctionStepModal = ({ visible, onClose, data, uploadFile, setNftId, ..
                 minimumBid
             )
             setIsWaitingForSign(false)
+            setIsCreatingNFT(true)
 
             const result = await contract.wait(1)
             const resdata = {
@@ -107,8 +108,6 @@ const FlowAuctionStepModal = ({ visible, onClose, data, uploadFile, setNftId, ..
                     name: newData?.name,
                     owner_id: ownerId
                 }
-
-                setIsCreatingNFT(true)
 
                 // create nft and get id of nft
                 const [createNFTData, errCreateNFT] = await nftService.createNft(collectibleData)
