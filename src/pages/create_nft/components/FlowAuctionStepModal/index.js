@@ -16,8 +16,7 @@ import CheckedIcon from '../../../../assest/icon/checked-outline-icon.svg'
 //css
 import './style.scss'
 
-const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restProps }) => {
-    //state
+const FlowAuctionStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restProps }) => {
     const [isUploadingImage, setIsUploadingImage] = useState(true)
     const [isCreatingNFT, setIsCreatingNFT] = useState(false)
     const [isWaitingForSign, setIsWaitingForSign] = useState(false)
@@ -30,15 +29,15 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
     const handleDeployCollectible = async values => {
         try {
             const collectionContract = await genCollectionContract(values?.collectionAddress)
-            const price = convertPriceToBigDecimals(values?.price, 18)
+            const minimumBid = convertPriceToBigDecimals(values?.minimumBid, 18)
 
-            const contract = await collectionContract.mintAndListForSale(
+            const contract = await collectionContract.mintAndListOnAuction(
                 values?.to,
                 values?.name,
                 values?.description,
                 values?.category,
                 values?.tokenURI,
-                price
+                minimumBid
             )
             setIsWaitingForSign(false)
             setIsCreatingNFT(true)
@@ -76,7 +75,7 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
 
             const newData = { ...data, ...addData }
 
-            // deploy collectible to blockchain
+            // deploy collection to blockchain
             const [resData, error] = await handleDeployCollectible(newData)
 
             if (error) {
@@ -101,8 +100,10 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
                     item_id: nftIdCreated.toString(),
                     metadata: {
                         imageURL: imageLink,
-                        price: newData?.price,
-                        onSaleStatus: 1
+                        minimumBid: newData?.minimumBid,
+                        onSaleStatus: 2,
+                        startDate: newData?.startDate,
+                        expireDate: newData?.expireDate
                     },
                     name: newData?.name,
                     owner_id: ownerId
@@ -131,7 +132,7 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
     }
 
     return (
-        <Modal className="create-nft-flow_custom" footer={null} centered visible={visible}>
+        <Modal className="auction-nft-flow_custom" footer={null} centered visible={visible} {...restProps}>
             <div className="create-nft-flow_header">
                 <span className="create-nft-flow_title">Follow Steps</span>
             </div>
@@ -194,4 +195,4 @@ const FlowStepModal = ({ visible, onClose, data, uploadFile, setNftId, ...restPr
     )
 }
 
-export default FlowStepModal
+export default FlowAuctionStepModal

@@ -1,9 +1,9 @@
 @import '../../../../styles/variables.scss';
 @import '../../../../styles/mixins.scss';
-.buy-modal-container {
+.accept-modal-container {
+    width: 768px;
     font-size: 16px;
     color: $primary-color;
-    width: 768px;
     p {
         margin: 0px;
     }
@@ -28,9 +28,6 @@
     .collection-text {
         color: $third_color;
         font-weight: 500;
-        span {
-            margin-right: 12px;
-        }
     }
     .bold-text {
         font-size: 18px;
@@ -47,8 +44,7 @@
         }
     }
     .checkout-detail {
-        margin: 24px 0;
-        margin-bottom: 0;
+        margin: 24px 0px 40px 0px;
         .checkout-detail__header {
             display: flex;
             justify-content: space-between;
@@ -93,7 +89,7 @@
         }
         .asset-img {
             border-radius: 8px;
-            height: 80px;
+            height: 60px;
             margin-right: 20px;
         }
         .loading-img-placeholder {
@@ -104,21 +100,21 @@
         }
         .nft-info {
             display: flex;
-            max-width: 80%;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
+            max-width: 550px;
+            word-wrap: break-word;
+            padding-bottom: 32px;
             & > :nth-child(2) {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                max-width: 80%;
+                max-width: 550px;
+                word-wrap: break-word;
                 & > :nth-child(2) {
                     margin-top: 5px;
                     font-weight: 700;
                     font-size: 22px;
-
-                    display: inline-block;
+                    width: calc(80%);
+                    display: block;
                     overflow: hidden;
                     white-space: nowrap;
                     text-overflow: ellipsis;
@@ -126,47 +122,52 @@
             }
         }
         .nft-info-mobile {
-            display: flex;
-            max-width: 100%;
-
-            & > :nth-child(2) {
-                flex: 1;
+            & > :first-child {
                 display: flex;
-                align-items: flex-start;
-                & > :first-child {
-                    width: 100px;
-                    display: block;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                }
                 & > :nth-child(2) {
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    overflow: hidden;
+                    flex: 1;
+                    word-wrap: break-word;
                     & > :first-child {
-                        font-size: 9px;
-                        width: 35%;
+                        width: 150px;
+                        display: block;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
                     }
                     & > :nth-child(2) {
+                        width: 100%;
                         display: flex;
-                        justify-content: flex-end;
                         align-items: center;
-                        flex-flow: row wrap;
-                        width: max-content;
-                        overflow: visible;
-                        font-size: 14px;
+                        justify-content: space-between;
+
                         & > :first-child {
                             font-size: 9px;
+                            width: 35%;
+                            word-break: break-word;
                         }
                         & > :nth-child(2) {
-                            color: $primary_color;
-                            margin-left: 4px;
+                            width: max-content;
+                            overflow: visible;
+                            font-size: 14px;
+                            text-align: end;
+                            & > :first-child {
+                                font-size: 9px;
+                                color: $third_color;
+                            }
+                            & > :nth-child(2) {
+                                color: $primary_color;
+                                margin-left: 4px;
+                            }
                         }
                     }
                 }
+            }
+            & > :nth-child(2) {
+                margin-top: 32px;
+                display: block;
+                color: $primary_color;
+                font-weight: 700;
+                font-size: 14px;
             }
         }
         .term-of-service {

@@ -6,7 +6,7 @@ import CollectionFollowStepModal from './CollectionFlowstepModal'
 import CreateCollectionSelected from './CreateCollectionSelected'
 import FlowStepNotForSale from './FlowStepNotForSale'
 import FlowStepModal from './FlowStepModal'
-// import FlowAuctionStepModal from './FlowAuctionStepModal'
+import FlowAuctionStepModal from './FlowAuctionStepModal'
 
 export {
     Categories,
@@ -15,7 +15,7 @@ export {
     CreateCollectionModal,
     CollectionFollowStepModal,
     CreateCollectionSelected,
-    // FlowAuctionStepModal,
+    FlowAuctionStepModal,
     FlowStepModal,
     FlowStepNotForSale
 }

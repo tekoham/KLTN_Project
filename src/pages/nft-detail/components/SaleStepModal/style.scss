@@ -1,6 +1,8 @@
 @import '../../../../styles/variables.scss';
 
-.ant-modal.create-nft-flow_custom {
+.ant-modal.sale-flow_custom {
+    display: flex;
+    justify-content: center;
     .ant-modal-content {
         border-radius: 16px !important;
         max-width: 100%;
@@ -25,9 +27,11 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 24px;
+
             .create-nft-loading {
                 width: 45px;
             }
+
             .create-nft-step_loading {
                 margin-top: 4px;
                 margin-right: 24px;
@@ -69,15 +73,6 @@
                 }
             }
         }
-    }
-    .warning {
-        margin-top: 24px;
-        border-top: 1px solid $lightGrayColor;
-        padding-top: 32px;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        color: $primary_color;
     }
 }
 

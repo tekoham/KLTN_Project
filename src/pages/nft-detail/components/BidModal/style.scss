@@ -1,0 +1,181 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
+.bid-modal-container {
+    color: $third_color;
+    font-size: 14px;
+    @include up-to-size('sm') {
+        font-size: 12px;
+    }
+    p {
+        margin: 0px;
+    }
+    .error-balance {
+        color: red;
+        margin-top: 8px;
+    }
+    .bold-text {
+        font-size: 18px;
+        font-weight: 700;
+        @include up-to-size('sm') {
+            font-size: 14px;
+        }
+    }
+    .light-text {
+        font-size: 18px !important;
+        font-weight: 400 !important;
+        @include up-to-size('sm') {
+            font-size: 14px !important;
+        }
+    }
+    & > :first-child {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: $primary_color;
+        @include up-to-size('sm') {
+            font-size: 24px;
+        }
+    }
+    & > :nth-child(2) {
+        font-size: 18px;
+        color: $primary_color;
+        font-weight: 700;
+        margin-bottom: 16px;
+        @include up-to-size('sm') {
+            font-size: 14px;
+        }
+    }
+    & > :nth-child(3) {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 9px;
+        & > :nth-child(2) {
+            font-weight: 700;
+        }
+        @include up-to-size('sm') {
+            font-size: 12px;
+        }
+    }
+    & > :nth-child(4) {
+        margin-bottom: 16px;
+        height: 50px;
+        padding: 0px !important;
+        font-size: 16px;
+        color: $primary_color;
+        .ant-input {
+            font-weight: 700;
+            padding-left: 40px;
+            @include up-to-size('sm') {
+                padding-left: 12px;
+            }
+        }
+        .bid-input-prefix {
+            border-radius: 8px 0px 0px 8px;
+            background-color: $lightGrayColor;
+            width: 127px;
+            height: 100%;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @include up-to-size('sm') {
+                width: min-content;
+                padding: 12px;
+            }
+        }
+        .bid-input-suffix {
+            border-radius: 0px 8px 8px 0px;
+            background-color: $lightGrayColor;
+            min-width: 127px;
+            height: 100%;
+            padding: 12px 24px;
+            text-align: center;
+            @include up-to-size('sm') {
+                min-width: min-content;
+                padding: 12px;
+            }
+        }
+    }
+    .ant-checkbox-checked .ant-checkbox-inner {
+        background-color: $primary_color;
+        border-color: $primary_color;
+    }
+
+    .term-of-service {
+        display: flex;
+        align-items: center;
+        @include up-to-size('sm') {
+            align-items: flex-start;
+        }
+        .term-of-service-text {
+            margin-left: 14px;
+            & > :first-child {
+                font-size: 16px;
+                color: $third_color;
+                @include up-to-size('sm') {
+                    font-size: 14px;
+                }
+            }
+            & > :nth-child(2) {
+                font-size: 16px;
+                color: $primary-color;
+                font-weight: 700;
+                text-decoration: underline;
+                margin-left: 8px;
+                @include up-to-size('sm') {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .service-fee-row {
+        color: $primary_color;
+        margin-top: 32px;
+        margin-bottom: 24px;
+        & > :nth-child(2) {
+            text-align: end;
+            & > :nth-child(2) {
+                color: $third_color;
+                @include up-to-size('sm') {
+                    font-size: 9px;
+                }
+            }
+        }
+    }
+
+    .total-fee-row {
+        border-top: 1px solid $lightGrayColor;
+        padding-top: 24px;
+        margin-bottom: 32px;
+        color: $primary_color;
+        @include up-to-size('sm') {
+            font-size: 14px;
+        }
+        & > :nth-child(2) {
+            text-align: end;
+            & > :first-child {
+                font-size: 24px;
+                font-weight: 500;
+                @include up-to-size('sm') {
+                    font-size: 14px;
+                }
+            }
+            & > :nth-child(2) {
+                color: $third_color;
+                @include up-to-size('sm') {
+                    font-size: 9px;
+                }
+            }
+        }
+    }
+
+    .bid-modal-actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 48px;
+        & > * {
+            width: 48.4% !important;
+        }
+    }
+}

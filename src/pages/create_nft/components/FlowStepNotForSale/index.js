@@ -6,6 +6,9 @@ import uploadImageService from '../../../../service/uploadImageService'
 import { genCollectionContract } from '../../../../blockchain/instance'
 import { convertBigNumberValueToNumber } from '../../../../blockchain/ether'
 
+//image
+import CheckedIcon from '../../../../assest/icon/checked-outline-icon.svg'
+
 import './style.scss'
 
 const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) => {
@@ -14,7 +17,9 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
     const { myProfile } = useSelector(state => state.user) || {}
 
     //state
-    const [isCreatingNFT] = useState(true)
+    const [isUploadingImage, setIsUploadingImage] = useState(true)
+    const [isCreatingNFT, setIsCreatingNFT] = useState(false)
+    const [isWaitingForSign, setIsWaitingForSign] = useState(false)
 
     //func
     const handleDeployCollectible = async values => {
@@ -27,6 +32,9 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
                 values?.category,
                 values?.tokenURI
             )
+
+            setIsWaitingForSign(false)
+            setIsCreatingNFT(true)
 
             const result = await contract.wait(1)
 
@@ -52,6 +60,8 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
             message.error(`Failed to upload collectible avatar: ${errorUpload}`)
             onClose()
         }
+        setIsUploadingImage(false)
+        setIsWaitingForSign(true)
         const addData = {
             to: myProfile?.data?.address,
             tokenURI: imageLink
@@ -75,6 +85,7 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
         // save collection to database
         if (resData) {
             nftIdCreated = resData?.tokenId
+            const ownerId = localStorage.getItem('userId')
 
             const collectibleData = {
                 category: String(newData?.category),
@@ -86,7 +97,7 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
                     onSaleStatus: 0
                 },
                 name: newData?.name,
-                owner: resData?.owner
+                owner_id: ownerId
             }
 
             // create nft and get id of nft
@@ -95,7 +106,7 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
                 onClose()
                 return message.error('Creating collectible failed', errCreateNFT)
             } else {
-                setNftId(nftIdCreated)
+                setNftId(createNFTData?.id)
                 message.success('Collectible has been created successfully')
                 onClose()
             }
@@ -111,7 +122,47 @@ const FlowStepNotForSale = ({ visible, onClose, data, uploadFile, setNftId }) =>
             </div>
             <div className="create-nft-steps">
                 <div className="create-nft-step">
-                    {isCreatingNFT && <div className="create-nft-step_loading" />}
+                    <div className="create-nft-loading">
+                        {isUploadingImage ? (
+                            <div className="create-nft-step_loading" />
+                        ) : (
+                            <img className="create-nft-step_icon" src={CheckedIcon} alt="checked-outline-icon" />
+                        )}
+                    </div>
+
+                    <div className={`create-nft-step_content`}>
+                        <span className="create-nft-step_content__title">Uploading Avatar</span>
+                        <span className="create-nft-step_content__desc" style={{ marginBottom: '10px' }}>
+                            Please wait while we upload your collectible avatar to IPFS
+                        </span>
+                    </div>
+                </div>
+
+                <div className="create-nft-step">
+                    <div className="create-nft-loading">
+                        {!isUploadingImage ? (
+                            isWaitingForSign ? (
+                                <div className="create-nft-step_loading" />
+                            ) : (
+                                <img className="create-nft-step_icon" src={CheckedIcon} alt="checked-outline-icon" />
+                            )
+                        ) : (
+                            ''
+                        )}
+                    </div>
+
+                    <div className={`create-nft-step_content`}>
+                        <span className="create-nft-step_content__title">Create Signing</span>
+                        <span className="create-nft-step_content__desc" style={{ marginBottom: '10px' }}>
+                            Signing to confirm put on the CAS NFT market
+                        </span>
+                    </div>
+                </div>
+                <div className="create-nft-step">
+                    <div className="create-nft-loading">
+                        {isCreatingNFT && <div className="create-nft-step_loading" />}
+                    </div>
+
                     <div className={`create-nft-step_content`}>
                         <span className="create-nft-step_content__title">Create collectible</span>
                         <span className="create-nft-step_content__desc" style={{ marginBottom: '10px' }}>

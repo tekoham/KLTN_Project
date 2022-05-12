@@ -1,239 +1,246 @@
 @import '../../styles/variables.scss';
 
 .collectible-detail-container {
-  color: black;
-  .collectible-banner {
-    position: relative;
-    height: 280px;
-    background-image: url('../../assest/image/nft-detail-banner.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 0 80px;
-    overflow: hidden;
-    .title {
-      font-size: 45px;
-      font-weight: 600;
-      margin-top: 60px;
-      color: $whiteColor;
+    color: black;
+    .collectible-banner {
+        position: relative;
+        height: 280px;
+        background-image: url('../../assest/image/nft-detail-banner.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 0 80px;
+        overflow: hidden;
+        .title {
+            font-size: 45px;
+            font-weight: 600;
+            margin-top: 60px;
+            color: $whiteColor;
+        }
     }
-  }
-  .collectible-detail-content {
-    padding: 80px 80px;
-    .collectible-information-container {
-      .collectible-image {
-        min-width: 596px;
-        height: 596px;
-        border-radius: 8px;
-        img {
-          width: 100%;
-          height: 100%;
-          border-radius: 8px;
-          object-fit: cover;
+    .collectible-detail-content {
+        padding: 80px 80px;
+        .collectible-information-container {
+            .collectible-image {
+                width: 668px;
+                height: 596px;
+                border-radius: 8px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 8px;
+                    object-fit: cover;
+                }
+            }
+            .collectible-information {
+                margin-left: 48px;
+                .collectible-name {
+                    width: 100%;
+                    font-size: 40px;
+                    font-weight: 500;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .collectible-attribute {
+                    margin: 24px 0;
+                    .collectible-category,
+                    .collectible-like {
+                        padding: 8px 22px 6px;
+                        font-size: 16px;
+                        color: $darkGrayColor;
+                        font-weight: 500;
+                        border-radius: 15px;
+                        border: 1px solid $whiteColor;
+                        background-color: $lightGrayColor;
+                        max-width: 125px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        .heart-icon {
+                            position: relative;
+                            top: -1.5px;
+                            margin-right: 8px;
+                            font-weight: bold;
+                        }
+                    }
+                    .collectible-like {
+                        margin-left: 16px;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .collectible-description {
+                    font-size: 16px;
+                    color: $darkGrayColor;
+                    margin-bottom: 24px;
+                    .show-more,
+                    .show-less {
+                        display: inline;
+                        margin-left: 8px;
+                        color: $third-color;
+                        &:hover {
+                            cursor: pointer;
+                            color: $secondary-color;
+                        }
+                    }
+                }
+                .collectible-author-info {
+                    align-items: center;
+                    .avatar-container {
+                        position: relative;
+                        .avatar {
+                            width: 40px;
+                            border-radius: 50px;
+                        }
+                        .verified-icon {
+                            position: absolute;
+                            bottom: 0;
+                            right: -2px;
+                            width: 14px;
+                        }
+                    }
+
+                    .info {
+                        margin-left: 8px;
+                        .name {
+                            max-width: 150px;
+                            font-size: 16px;
+                            font-weight: 500;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            &:hover {
+                                color: $secondary-color;
+                                cursor: pointer;
+                            }
+                        }
+                        .role {
+                            color: $darkGrayColor;
+                        }
+                    }
+                    .collectible-owner,
+                    .collectible-collection {
+                        margin-left: 40px;
+                    }
+                }
+                .sale-container {
+                    margin-top: 24px;
+                    width: 100%;
+                    padding: 24px 32px;
+                    background-color: $lightGrayColor;
+                    border-radius: 8px;
+                    .price-container {
+                        .price-content {
+                            .title {
+                                color: $darkGrayColor;
+                                font-weight: 500;
+                            }
+                            .fixed-price,
+                            .highest-bids,
+                            .time-left {
+                                font-size: 21px;
+                                font-weight: 600;
+                                margin-top: 8px;
+                                span {
+                                    margin-left: 12px;
+                                }
+                            }
+                        }
+                    }
+                    .buy-btn {
+                        width: 100%;
+                        margin-top: 24px;
+                    }
+                }
+                .not-for-sale-btn {
+                    margin-top: 56px;
+                    width: 100%;
+                }
+            }
         }
-      }
-      .collectible-information {
-        margin-left: 48px;
-        .collectible-name {
-          width: 100%;
-          font-size: 40px;
-          font-weight: 500;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        .collectible-attribute {
-          margin: 24px 0;
-          .collectible-category,
-          .collectible-like {
-            padding: 8px 22px 6px;
-            font-size: 16px;
-            color: $darkGrayColor;
-            font-weight: 500;
-            border-radius: 15px;
-            border: 1px solid $whiteColor;
+        .bids-history-container {
+            margin-top: 60px;
             background-color: $lightGrayColor;
-            max-width: 125px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            .heart-icon {
-              position: relative;
-              top: -1.5px;
-              margin-right: 8px;
-              font-weight: bold;
+            max-width: 780px;
+            height: 450px;
+            padding: 24px 36px;
+            .title {
+                font-size: 24px;
+                font-weight: 700;
+                margin-bottom: 32px;
             }
-          }
-          .collectible-like {
-            margin-left: 16px;
-            &:hover {
-              cursor: pointer;
-            }
-          }
-        }
-        .collectible-description {
-          font-size: 16px;
-          color: $darkGrayColor;
-          margin-bottom: 24px;
-          .show-more,
-          .show-less {
-            display: inline;
-            margin-left: 8px;
-            color: $third-color;
-            &:hover {
-              cursor: pointer;
-              color: $secondary-color;
-            }
-          }
-        }
-        .collectible-author-info {
-          align-items: center;
-          .avatar-container {
-            position: relative;
-            .avatar {
-              width: 40px;
-              border-radius: 50px;
-            }
-            .verified-icon {
-              position: absolute;
-              bottom: 0;
-              right: -2px;
-              width: 14px;
-            }
-          }
-
-          .info {
-            margin-left: 8px;
-            .name {
-              font-size: 16px;
-              font-weight: 500;
-              &:hover {
-                color: $secondary-color;
-                cursor: pointer;
-              }
-            }
-            .role {
-              color: $darkGrayColor;
-            }
-          }
-          .collectible-owner,
-          .collectible-collection {
-            margin-left: 40px;
-          }
-        }
-        .sale-container {
-          margin-top: 24px;
-          width: 100%;
-          padding: 24px 32px;
-          background-color: $lightGrayColor;
-          border-radius: 8px;
-          .price-container {
-            .price-content {
-              .title {
-                color: $darkGrayColor;
-                font-weight: 500;
-              }
-              .fixed-price,
-              .highest-bids,
-              .time-left {
-                font-size: 21px;
-                font-weight: 600;
-                margin-top: 8px;
-              }
-            }
-          }
-          .buy-btn {
-            width: 100%;
-            margin-top: 24px;
-          }
-        }
-        .not-for-sale-btn {
-          margin-top: 56px;
-          width: 100%;
-        }
-      }
-    }
-    .bids-history-container {
-      margin-top: 60px;
-      background-color: $lightGrayColor;
-      max-width: 780px;
-      height: 450px;
-      padding: 24px 36px;
-      .title {
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 32px;
-      }
-      .bids-history-content {
-        height: calc(100% - 70px);
-        overflow-y: scroll;
-        .list-activity {
-          background-color: $whiteColor;
-          padding: 20px;
-          margin-top: 24px;
-          margin-right: 24px;
-          &:first-of-type {
-            margin-top: 0;
-          }
-          .user-container {
-            .avatar-container {
-              position: relative;
-              width: 54px;
-              height: 54px;
-              .avatar {
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-                border-radius: 15px;
-              }
-              .verified-icon {
-                position: absolute;
-                bottom: -2px;
-                right: -5px;
-              }
-            }
-            .user-info {
-              margin-left: 16px;
-              font-size: 16px;
-              font-weight: 500;
-              color: $darkGrayColor;
-              .action {
-                .price {
-                  color: black;
-                  font-weight: 700;
+            .bids-history-content {
+                height: calc(100% - 70px);
+                overflow-y: scroll;
+                .list-activity {
+                    background-color: $whiteColor;
+                    padding: 20px;
+                    margin-top: 24px;
+                    margin-right: 24px;
+                    &:first-of-type {
+                        margin-top: 0;
+                    }
+                    .user-container {
+                        .avatar-container {
+                            position: relative;
+                            width: 54px;
+                            height: 54px;
+                            .avatar {
+                                object-fit: cover;
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 15px;
+                            }
+                            .verified-icon {
+                                position: absolute;
+                                bottom: -2px;
+                                right: -5px;
+                            }
+                        }
+                        .user-info {
+                            margin-left: 16px;
+                            font-size: 16px;
+                            font-weight: 500;
+                            color: $darkGrayColor;
+                            .action {
+                                .price {
+                                    color: black;
+                                    font-weight: 700;
+                                }
+                            }
+                            .name {
+                                span {
+                                    font-weight: 600;
+                                    color: $secondary-color;
+                                }
+                            }
+                        }
+                    }
+                    .time-display {
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: $darkGrayColor;
+                    }
                 }
-              }
-              .name {
-                span {
-                  font-weight: 600;
-                  color: $secondary-color;
-                }
-              }
             }
-          }
-          .time-display {
-            font-size: 16px;
-            font-weight: 500;
-            color: $darkGrayColor;
-          }
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background-color: $whiteColor;
+                border-radius: 8px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: $third-color;
+                border-radius: 8px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: $secondary-color;
+            }
         }
-      }
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background-color: $whiteColor;
-        border-radius: 8px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: $third-color;
-        border-radius: 8px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: $secondary-color;
-      }
     }
-  }
 }

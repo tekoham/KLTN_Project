@@ -29,7 +29,7 @@ const AppContainer = props => {
         if (!account) return
 
         const isGoerli = Number(chainId) === ETHER_NETWORK_ID
-        console.log(isGoerli)
+
         if (!isGoerli) {
             dispatch(openWrongNetworkModal())
             dispatch({
